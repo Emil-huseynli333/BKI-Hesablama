@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional BKİ Hesablayıcı</title>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #4a7c59;
+            --bg: #f8f9fa;
+            --border: #ced4da;
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 480px; }
+        
+        h2 { color: #2c3e50; margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        
+        .tabs { display: flex; margin-bottom: 20px; background: #eee; border-radius: 8px; padding: 5px; }
+        .tab { flex: 1; padding: 10px; cursor: pointer; border: none; background: none; font-weight: bold; color: #555; transition: 0.3s; border-radius: 6px; }
+        .tab.active { background: white; color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
+        .row { display: flex; align-items: center; margin-bottom: 15px; }
+        .row label { width: 100px; font-weight: 600; color: #444; }
+        .input-box { flex: 1; display: flex; gap: 8px; align-items: center; }
+        
+        input[type="number"] { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(74, 124, 89, 0.2); }
+        
+        .btn-container { display: flex; gap: 10px; margin-top: 25px; }
+        button.calc { background: var(--primary); color: white; border: none; padding: 14px; flex: 2; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        button.clear { background: #6c757d; color: white; border: none; padding: 14px; flex: 1; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        button:hover { opacity: 0.9; }
+
+        .ad-space { margin: 20px 0; min-height: 100px; display: flex; justify-content: center; align-items: center; background: #fafafa; border: 1px dashed #ccc; color: #999; font-size: 12px; }
+
+        #result-box { margin-top: 30px; padding: 20px; border-radius: 10px; background: #fff; border: 2px solid #eee; text-align: center; display: none; }
+        .gauge-container { position: relative; height: 40px; background: linear-gradient(to right, #4dabf7 0%, #51cf66 25%, #fab005 50%, #ff922b 75%, #fa5252 100%); border-radius: 20px; margin: 20px 0; overflow: hidden; }
+        .pointer { position: absolute; top: 0; width: 6px; height: 100%; background: #333; border: 2px solid white; transition: 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        
+        .bmi-val { font-size: 32px; font-weight: 800; color: var(--primary); }
+        .bmi-status { font-size: 20px; font-weight: bold; margin-bottom: 5px; }
+        .info-text { font-size: 14px; color: #666; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>BKİ Hesablayıcı</h2>
+    
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('metric')">Metrik (kq/sm)</button>
+        <button class="tab" onclick="switchTab('us')">US (funt/fut)</button>
+    </div>
+
+    <div class="row">
+        <label>Yaş:</label>
+        <div class="input-box"><input type="number" id="age" placeholder="2 - 120"></div>
+    </div>
+
+    <div id="metric-inputs">
+        <div class="row">
+            <label>Boy (sm):</label>
+            <div class="input-box"><input type="number" id="m-height" placeholder="məs. 175"></div>
+        </div>
+        <div class="row">
+            <label>Çəki (kq):</label>
+            <div class="input-box"><input type="number" id="m-weight" placeholder="məs. 70"></div>
+        </div>
+    </div>
+
+    <div id="us-inputs" style="display:none;">
+        <div class="row">
+            <label>Boy:</label>
+            <div class="input-box">
+                <input type="number" id="us-feet" placeholder="Fut">
+                <input type="number" id="us-inch" placeholder="Düym">
+            </div>
+        </div>
+        <div class="row">
+            <label>Çəki (lbs):</label>
+            <div class="input-box"><input type="number" id="us-weight" placeholder="Pound"></div>
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <button class="calc" onclick="calculate()">Hesabla</button>
+        <button class="clear" onclick="clearFields()">Təmizlə</button>
+    </div>
+
+    <div class="ad-space">
+        Reklam sahəsi
+    </div>
+
+    <div id="result-box">
+        <div class="info-text">Sizin Bədən Kütlə İndeksiniz:</div>
+        <div class="bmi-val" id="res-num">0</div>
+        <div class="bmi-status" id="res-text">Normal</div>
+        <div class="gauge-container">
+            <div id="ptr" class="pointer" style="left: 0%;"></div>
+        </div>
+        <div class="info-text" id="bmi-desc">Sağlam çəki aralığındasınız.</div>
+    </div>
+</div>
+
+<script>
+    let currentMode = 'metric';
+
+    function switchTab(mode) {
+        currentMode = mode;
+        const tabs = document.querySelectorAll('.tab');
+        tabs[0].classList.toggle('active', mode === 'metric');
+        tabs[1].classList.toggle('active', mode === 'us');
+        document.getElementById('metric-inputs').style.display = mode === 'metric' ? 'block' : 'none';
+        document.getElementById('us-inputs').style.display = mode === 'us' ? 'block' : 'none';
+    }
+
+    function calculate() {
+        let bmi = 0;
+        const age = document.getElementById('age').value;
+        if (!age || age < 2) { alert("Zəhmət olmasa düzgün yaş daxil edin."); return; }
+
+        if (currentMode === 'metric') {
+            let h = document.getElementById('m-height').value / 100;
+            let w = document.getElementById('m-weight').value;
+            if (h > 0 && w > 0) bmi = w / (h * h);
+        } else {
+            let f = parseInt(document.getElementById('us-feet').value) || 0;
+            let i = parseInt(document.getElementById('us-inch').value) || 0;
+            let w = document.getElementById('us-weight').value;
+            let totalInches = (f * 12) + i;
+            if (totalInches > 0 && w > 0) bmi = (w / (totalInches * totalInches)) * 703;
+        }
+
+        if (bmi > 0) { updateUI(bmi.toFixed(1)); } else { alert("Lütfən məlumatları doldurun."); }
+    }
+
+    function updateUI(bmi) {
+        const box = document.getElementById('result-box');
+        const resNum = document.getElementById('res-num');
+        const resText = document.getElementById('res-text');
+        const resDesc = document.getElementById('bmi-desc');
+        const ptr = document.getElementById('ptr');
+        box.style.display = 'block';
+        resNum.innerText = bmi;
+        let pos = 0;
+        if (bmi < 18.5) { status = "Az çəki"; pos = (bmi/18.5)*20; } 
+        else if (bmi < 25) { status = "Normal"; pos = 25 + ((bmi-18.5)/6.5)*20; } 
+        else if (bmi < 30) { status = "Artıq çəki"; pos = 50 + ((bmi-25)/5)*20; } 
+        else { status = "Piylənmə"; pos = 80 + (Math.min(bmi-30, 10)/10)*20; }
+        resText.innerText = status;
+        ptr.style.left = Math.min(pos, 98) + '%';
+    }
+
+    function clearFields() {
+        document.querySelectorAll('input[type="number"]').forEach(i => i.value = '');
+        document.getElementById('result-box').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
