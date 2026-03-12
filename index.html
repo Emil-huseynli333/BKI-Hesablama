@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Praktik BKİ Hesablayıcı | Onlayn Çəki Analizi</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7563994232518889" crossorigin="anonymous"></script>
 
     <style>
         :root {
@@ -60,13 +60,12 @@
         .bmi-val { font-size: 56px; font-weight: 900; color: var(--primary-green); margin: 10px 0; }
         .bmi-cat { font-size: 22px; font-weight: 700; margin-bottom: 25px; }
 
-        /* Rəngli Animasiyalı Şkala Stiləri */
         .gauge-wrapper { position: relative; width: 100%; height: 40px; margin-top: 35px; }
         .gauge-bar { width: 100%; height: 25px; border-radius: 12px; display: flex; overflow: hidden; }
         .gauge-labels { position: absolute; top: -25px; width: 100%; font-size: 12px; font-weight: bold; color: #718096; display: flex; justify-content: space-between; }
         .ptr { position: absolute; top: -5px; width: 5px; height: 35px; background: #2d3748; border: 2px solid white; border-radius: 10px; transition: left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10; }
 
-        .scientific-content { width: 100%; max-width: 850px; margin-top: 50px; }
+        .scientific-content { width: 100%; max-width: 850px; margin-top: 30px; }
         .article-card { background: white; padding: 45px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); line-height: 1.8; }
         .article-card h2 { color: var(--primary-green); font-size: 24px; margin-top: 35px; border-left: 6px solid var(--primary-green); padding-left: 20px; }
         .article-card h3 { color: #2d3748; margin-top: 25px; }
@@ -79,6 +78,7 @@
         .math-box { background: #f0fdf4; padding: 25px; border-radius: 15px; border: 1px solid #dcfce7; font-family: 'Courier New', monospace; font-weight: bold; text-align: center; margin: 25px 0; }
         
         .footer-note { font-size: 13px; color: #a0aec0; text-align: center; margin: 50px 0; line-height: 1.5; max-width: 700px; }
+        .ad-spacer { margin: 30px 0; width: 100%; max-width: 650px; text-align: center; min-height: 100px; }
     </style>
 </head>
 <body>
@@ -125,9 +125,21 @@
     </div>
 </div>
 
+<div class="ad-spacer">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-7563994232518889"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
 <div class="scientific-content">
     <div class="article-card" id="seo-area">
-        </div>
+    </div>
 </div>
 
 <div class="footer-note" id="t-footer"></div>
@@ -135,7 +147,7 @@
 <script>
     const data = {
         az: {
-            h1: "Bədən Kütlə İndeksi Hesablayıcı", age: "Yaş:", height: "Boy (sm):", weight: "Çəki (kq):", calc: "Hesabla", clear: "Təmizlə", res: "Nəticəniz:", footer: "Qeyd: Bu hesablama yalnız məlumat xarakterlidir və fərdi fiziki xüsusiyyətlərinizə görə dəyişə bilər.",
+            h1: "Bədən Kütlə İndeksi Hesablayıcı", age: "Yaşınız:", height: "Boyunuz (sm):", weight: "Çəkiniz (kq):", calc: "Hesabla", clear: "Təmizlə", res: "Sizin Nəticəniz:", footer: "Qeyd: Bu hesablama yalnız məlumat xarakterlidir və fərdi fiziki xüsusiyyətlərinizə görə dəyişə bilər.",
             status: ["Ciddi Çəki Azlığı", "Çəki Azlığı", "Normal Çəki", "Artıq Çəki", "Piylənmə (I Dərəcə)", "Piylənmə (II Dərəcə)", "Morbid Piylənmə"],
             html: `
                 <h2>1. Bədən Kütlə İndeksi (BKİ) Nədir?</h2>
@@ -155,19 +167,19 @@
                 <p>Düzgün çəki aralığında olmaq gündəlik enerji səviyyəsinə və fiziki aktivliyə müsbət təsir göstərir. Artıq çəki adətən mexaniki yükün artması ilə nəticələnir.</p>
 
                 <h2>4. BMI Prime və Ponderal İndeksi</h2>
-                <p><strong>BMI Prime:</strong> Bu göstərici indeksin ideal yuxarı həddə (25) olan nisbətidir. <strong>Ponderal İndeksi:</strong> Boyun kubunu ($kg/m^3$) istifadə edərək bədən quruluşunu daha dəqiq analiz edir.</p>
+                <p><strong>BMI Prime:</strong> Bu göstərici indeksin ideal yuxarı həddə (25) olan nisbətidir. <strong>Ponderal İndeksi:</strong> Boyun kubunu (kg/m³) istifadə edərək bədən quruluşunu daha dəqiq analiz edir.</p>
 
                 <h2>5. Gündəlik Aktivlik və Çəki Kontrolu</h2>
                 <p>BKİ tək başına hər şeyi ifadə etmir. Əzələ kütləsi və gündəlik idman vərdişləri bu rəqəmlərin necə qiymətləndirilməsinə təsir edir.</p>
             `
         },
         ru: {
-            h1: "Калькулятор Индекса Массы Тела", age: "Возраст:", height: "Рост (см):", weight: "Вес (кг):", calc: "Рассчитать", clear: "Очистить", res: "Ваш результат:", footer: "Примечание: Данный расчет носит справочный характер и может варьироваться в зависимости от индивидуальных особенностей организма.",
+            h1: "Калькулятор Индекса Массы Тела", age: "Ваш возраст:", height: "Ваш рост (см):", weight: "Ваш вес (кг):", calc: "Рассчитать", clear: "Очистить", res: "Ваш Результат:", footer: "Примечание: Данный расчет носит справочный характер и может варьироваться в зависимости от индивидуальных особенностей.",
             status: ["Выраженный дефицит", "Дефицит веса", "Норма", "Избыточный вес", "Ожирение I", "Ожирение II", "Морбидное ожирение"],
             html: `
                 <h2>1. Что такое Индекс Массы Тела (ИМТ)?</h2>
                 <p>ИМТ — это практический способ оценки соотношения веса и роста человека. Этот метод широко используется для быстрого анализа физического состояния.</p>
-                <div class="math-box">ИМТ = Вес (кг) / Рост² (м)</div>
+                <div class="math-box">ИМТ = Вес (кг) / (Рост (м) * Рост (м))</div>
 
                 <h2>2. Стандартные категории ИМТ</h2>
                 <table>
@@ -182,19 +194,19 @@
                 <p>Поддержание оптимального веса помогает сохранять высокую энергичность и физическую выносливость.</p>
 
                 <h2>4. BMI Prime и Индекс Пондераля</h2>
-                <p><strong>BMI Prime:</strong> Отношение ИМТ к верхнему пределу нормы. <strong>Индекс Пондераля:</strong> Метод, использующий куб роста для более точного анализа.</p>
+                <p><strong>BMI Prime:</strong> Отношение ИМТ к верхнему пределу нормы (25). <strong>Индекс Пондераля:</strong> Метод, использующий куб роста для более точного анализа.</p>
 
                 <h2>5. Образ жизни и активность</h2>
-                <p>Спортсменам следует рассматривать ИМТ в сочетании с другими параметрами тела.</p>
+                <p>ИМТ сам по себе не учитывает мышечную массу. Спортсменам следует рассматривать его в сочетании с другими параметрами тела.</p>
             `
         },
         en: {
-            h1: "BMI Calculator Online", age: "Age:", height: "Height (cm):", weight: "Weight (kg):", calc: "Calculate", clear: "Clear", res: "Your Result:", footer: "Note: This calculation is for informational purposes and may vary based on individual physical characteristics.",
+            h1: "BMI Calculator Online", age: "Your Age:", height: "Your Height (cm):", weight: "Your Weight (kg):", calc: "Calculate", clear: "Clear", res: "Your Result:", footer: "Note: This calculation is for informational purposes and may vary based on individual physical characteristics.",
             status: ["Severe Thinness", "Underweight", "Normal Range", "Overweight", "Obese Class I", "Obese Class II", "Obese Class III"],
             html: `
                 <h2>1. What is Body Mass Index (BMI)?</h2>
                 <p>BMI is a practical measurement used to assess the relationship between a person's weight and height. It is a great starting point for understanding body composition.</p>
-                <div class="math-box">BMI = weight (kg) / height² (m)</div>
+                <div class="math-box">BMI = Weight (kg) / (Height (m) * Height (m))</div>
 
                 <h2>2. Standard BMI Categories</h2>
                 <table>
@@ -209,7 +221,7 @@
                 <p>Staying within a healthy weight range contributes to daily energy levels and physical performance.</p>
 
                 <h2>4. BMI Prime and Ponderal Index</h2>
-                <p><strong>BMI Prime:</strong> Ratio to the healthy upper limit. <strong>Ponderal Index:</strong> Uses height cubed ($kg/m^3$) for body structure analysis.</p>
+                <p><strong>BMI Prime:</strong> Ratio to the healthy upper limit (25). <strong>Ponderal Index:</strong> Uses height cubed (kg/m³) for body structure analysis.</p>
 
                 <h2>5. Lifestyle and Activity</h2>
                 <p>Factors like muscle mass and lifestyle habits play a significant role beyond just numbers.</p>
@@ -218,12 +230,10 @@
     };
 
     let currentLang = 'az';
-
     function setLang(lang) {
         currentLang = lang;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(`btn-${lang}`).classList.add('active');
-        
         const l = data[lang];
         document.getElementById('t-h1').innerText = l.h1;
         document.getElementById('t-age').innerText = l.age;
@@ -241,18 +251,15 @@
         const wIn = document.getElementById('weight').value;
         const h = hIn / 100;
         const w = wIn;
-
         if (h > 0.5 && w > 10) {
             let bmi = w / (h * h);
             bmi = bmi.toFixed(1);
             document.getElementById('bmi-num').innerText = bmi;
             document.getElementById('res-panel').style.display = 'block';
-
             let L = { u: 18.5, n: 25, o: 30 };
             const t = data[currentLang].status;
             let status = "", color = "";
-            const max = 45; // Max şkala intervalı
-
+            const max = 45;
             if (bmi < 16) { status = t[0]; color = "#3182ce"; }
             else if (bmi < 18.5) { status = t[1]; color = "#63b3ed"; }
             else if (bmi < 25) { status = t[2]; color = "#48bb78"; }
@@ -260,32 +267,17 @@
             else if (bmi < 35) { status = t[4]; color = "#ed8936"; }
             else if (bmi < 40) { status = t[5]; color = "#e53e3e"; }
             else { status = t[6]; color = "#9b2c2c"; }
-
             const sElem = document.getElementById('bmi-status');
-            sElem.innerText = status;
-            sElem.style.color = color;
-
+            sElem.innerText = status; sElem.style.color = color;
             updateGauge(L, bmi, max);
             document.getElementById('res-panel').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-            alert(currentLang === 'az' ? "Məlumatları düzgün daxil edin!" : "Invalid input!");
         }
     }
 
     function updateGauge(L, val, max) {
         const bar = document.getElementById('gauge-bar'), labs = document.getElementById('gauge-labels-container'), ptr = document.getElementById('ptr');
-        
-        bar.innerHTML = `<div style="width:${(L.u/max)*100}%; background:#63b3ed"></div>
-                         <div style="width:${((L.n-L.u)/max)*100}%; background:#48bb78"></div>
-                         <div style="width:${((L.o-L.n)/max)*100}%; background:#ecc94b"></div>
-                         <div style="flex:1; background:#e53e3e"></div>`;
-        
-        labs.innerHTML = `<span style="position:absolute; left:0">0</span>
-                          <span style="position:absolute; left:${(L.u/max)*100}%">${L.u}</span>
-                          <span style="position:absolute; left:${(L.n/max)*100}%">${L.n}</span>
-                          <span style="position:absolute; left:${(L.o/max)*100}%">${L.o}</span>
-                          <span style="position:absolute; right:0">${max}+</span>`;
-        
+        bar.innerHTML = `<div style="width:${(L.u/max)*100}%; background:#63b3ed"></div><div style="width:${((L.n-L.u)/max)*100}%; background:#48bb78"></div><div style="width:${((L.o-L.n)/max)*100}%; background:#ecc94b"></div><div style="flex:1; background:#e53e3e"></div>`;
+        labs.innerHTML = `<span style="position:absolute; left:0">0</span><span style="position:absolute; left:${(L.u/max)*100}%">${L.u}</span><span style="position:absolute; left:${(L.n/max)*100}%">${L.n}</span><span style="position:absolute; left:${(L.o/max)*100}%">${L.o}</span><span style="position:absolute; right:0">${max}+</span>`;
         ptr.style.left = Math.min((val/max)*100, 98) + '%';
     }
 
@@ -293,10 +285,7 @@
         document.querySelectorAll('input').forEach(i => i.value = "");
         document.getElementById('res-panel').style.display = 'none';
     }
-
     window.onload = () => setLang('az');
 </script>
 </body>
 </html>
-
-
