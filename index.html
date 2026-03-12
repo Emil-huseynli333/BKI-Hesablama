@@ -3,105 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional BKİ Hesablayıcı</title>
+    <title>BKİ Hesablayıcı / BMI Calculator</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
     <style>
-        :root {
-            --primary: #4a7c59;
-            --bg: #f8f9fa;
-            --border: #ced4da;
-        }
+        :root { --primary: #4a7c59; --bg: #f8f9fa; --border: #ced4da; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 480px; }
         
-        h2 { color: #2c3e50; margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        /* Dil Düymələri */
+        .lang-switcher { margin-bottom: 15px; display: flex; gap: 10px; }
+        .lang-btn { padding: 5px 12px; cursor: pointer; border: 1px solid #ccc; background: white; border-radius: 4px; font-size: 13px; }
+        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 480px; }
+        h2 { color: #2c3e50; margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 10px; font-size: 22px; }
         
         .tabs { display: flex; margin-bottom: 20px; background: #eee; border-radius: 8px; padding: 5px; }
-        .tab { flex: 1; padding: 10px; cursor: pointer; border: none; background: none; font-weight: bold; color: #555; transition: 0.3s; border-radius: 6px; }
+        .tab { flex: 1; padding: 10px; cursor: pointer; border: none; background: none; font-weight: bold; color: #555; border-radius: 6px; }
         .tab.active { background: white; color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
         .row { display: flex; align-items: center; margin-bottom: 15px; }
-        .row label { width: 100px; font-weight: 600; color: #444; }
-        .input-box { flex: 1; display: flex; gap: 8px; align-items: center; }
+        .row label { width: 100px; font-weight: 600; color: #444; font-size: 14px; }
+        .input-box { flex: 1; display: flex; gap: 8px; }
         
-        input[type="number"] { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; outline: none; transition: 0.3s; }
-        input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(74, 124, 89, 0.2); }
+        input[type="number"] { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; outline: none; }
         
         .btn-container { display: flex; gap: 10px; margin-top: 25px; }
-        button.calc { background: var(--primary); color: white; border: none; padding: 14px; flex: 2; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }
-        button.clear { background: #6c757d; color: white; border: none; padding: 14px; flex: 1; border-radius: 6px; cursor: pointer; font-size: 16px; }
-        button:hover { opacity: 0.9; }
-
-        .ad-space { margin: 20px 0; min-height: 100px; display: flex; justify-content: center; align-items: center; background: #fafafa; border: 1px dashed #ccc; color: #999; font-size: 12px; }
+        button.calc { background: var(--primary); color: white; border: none; padding: 14px; flex: 2; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        button.clear { background: #6c757d; color: white; border: none; padding: 14px; flex: 1; border-radius: 6px; cursor: pointer; }
 
         #result-box { margin-top: 30px; padding: 20px; border-radius: 10px; background: #fff; border: 2px solid #eee; text-align: center; display: none; }
-        .gauge-container { position: relative; height: 40px; background: linear-gradient(to right, #4dabf7 0%, #51cf66 25%, #fab005 50%, #ff922b 75%, #fa5252 100%); border-radius: 20px; margin: 20px 0; overflow: hidden; }
-        .pointer { position: absolute; top: 0; width: 6px; height: 100%; background: #333; border: 2px solid white; transition: 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .gauge-container { position: relative; height: 35px; background: linear-gradient(to right, #4dabf7 0%, #51cf66 25%, #fab005 50%, #ff922b 75%, #fa5252 100%); border-radius: 20px; margin: 15px 0; }
+        .pointer { position: absolute; top: 0; width: 6px; height: 100%; background: #333; border: 2px solid white; transition: 0.7s; }
         
         .bmi-val { font-size: 32px; font-weight: 800; color: var(--primary); }
-        .bmi-status { font-size: 20px; font-weight: bold; margin-bottom: 5px; }
-        .info-text { font-size: 14px; color: #666; }
     </style>
 </head>
 <body>
 
+<div class="lang-switcher">
+    <button class="lang-btn active" onclick="changeLanguage('az')">AZ</button>
+    <button class="lang-btn" onclick="changeLanguage('ru')">RU</button>
+    <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+</div>
+
 <div class="card">
-    <h2>BKİ Hesablayıcı</h2>
+    <h2 id="t-title">BKİ Hesablayıcı</h2>
     
     <div class="tabs">
-        <button class="tab active" onclick="switchTab('metric')">Metrik (kq/sm)</button>
-        <button class="tab" onclick="switchTab('us')">US (funt/fut)</button>
+        <button class="tab active" id="t-metric-tab" onclick="switchTab('metric')">Metrik</button>
+        <button class="tab" id="t-us-tab" onclick="switchTab('us')">US Units</button>
     </div>
 
     <div class="row">
-        <label>Yaş:</label>
-        <div class="input-box"><input type="number" id="age" placeholder="2 - 120"></div>
+        <label id="t-age-lbl">Yaş:</label>
+        <div class="input-box"><input type="number" id="age" placeholder="2-120"></div>
     </div>
 
     <div id="metric-inputs">
         <div class="row">
-            <label>Boy (sm):</label>
-            <div class="input-box"><input type="number" id="m-height" placeholder="məs. 175"></div>
+            <label id="t-h-lbl">Boy (sm):</label>
+            <div class="input-box"><input type="number" id="m-height"></div>
         </div>
         <div class="row">
-            <label>Çəki (kq):</label>
-            <div class="input-box"><input type="number" id="m-weight" placeholder="məs. 70"></div>
+            <label id="t-w-lbl">Çəki (kq):</label>
+            <div class="input-box"><input type="number" id="m-weight"></div>
         </div>
     </div>
 
     <div id="us-inputs" style="display:none;">
         <div class="row">
-            <label>Boy:</label>
+            <label id="t-us-h-lbl">Boy:</label>
             <div class="input-box">
-                <input type="number" id="us-feet" placeholder="Fut">
-                <input type="number" id="us-inch" placeholder="Düym">
+                <input type="number" id="us-feet" placeholder="ft">
+                <input type="number" id="us-inch" placeholder="in">
             </div>
         </div>
         <div class="row">
-            <label>Çəki (lbs):</label>
-            <div class="input-box"><input type="number" id="us-weight" placeholder="Pound"></div>
+            <label id="t-us-w-lbl">Çəki (lb):</label>
+            <div class="input-box"><input type="number" id="us-weight"></div>
         </div>
     </div>
 
     <div class="btn-container">
-        <button class="calc" onclick="calculate()">Hesabla</button>
-        <button class="clear" onclick="clearFields()">Təmizlə</button>
-    </div>
-
-    <div class="ad-space">
-        Reklam sahəsi
+        <button class="calc" id="t-calc-btn" onclick="calculate()">Hesabla</button>
+        <button class="clear" id="t-clear-btn" onclick="clearFields()">Təmizlə</button>
     </div>
 
     <div id="result-box">
-        <div class="info-text">Sizin Bədən Kütlə İndeksiniz:</div>
+        <div id="t-res-info" class="info-text">Sizin İndeksiniz:</div>
         <div class="bmi-val" id="res-num">0</div>
-        <div class="bmi-status" id="res-text">Normal</div>
+        <div class="bmi-status" id="res-text" style="font-weight:bold; font-size:20px;"></div>
         <div class="gauge-container">
             <div id="ptr" class="pointer" style="left: 0%;"></div>
         </div>
-        <div class="info-text" id="bmi-desc">Sağlam çəki aralığındasınız.</div>
+    </div>
+</div>
+
+<script>
+    const translations = {
+        az: {
+            title: "BKİ Hesablayıcı", metric: "Metrik", us: "US Units", age: "Yaş:", height: "Boy (sm):", weight: "Çəki (kq):",
+            usH: "Boy:", usW: "Çəki (lb):", calc: "Hesabla", clear: "Təmizlə", res: "Sizin İndeksiniz:",
+            under: "Az çəki", normal: "Normal", over: "Artıq çəki", obese: "Piylənmə", alert: "Məlumatları doldurun!"
+        },
+        ru: {
+            title: "Калькулятор ИМТ", metric: "Метрическая", us: "США Ед.", age: "Возраст:", height: "Рост (см):", weight: "Вес (кг):",
+            usH: "Рост:", usW: "Вес (фунт):", calc: "Рассчитать", clear: "Очистить", res: "Ваш индекс:",
+            under: "Недовес", normal: "Норма", over: "Избыточный вес", obese: "Ожирение", alert: "Заполните данные!"
+        },
+        en: {
+            title: "BMI Calculator", metric: "Metric", us: "US Units", age: "Age:", height: "Height (cm):", weight: "Weight (kg):",
+            usH: "Height:", usW: "Weight (lb):", calc: "Calculate", clear: "Clear", res: "Your BMI:",
+            under: "Underweight", normal: "Normal", over: "Overweight", obese: "Obesity", alert: "Please fill all fields!"
+        }
+    };
+
+    let currentLang = 'az';
+    let currentMode = 'metric';
+
+    function changeLanguage(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        const t = translations[lang];
+        document.getElementById('t-title').innerText = t.title;
+        document.getElementById('t-metric-tab').innerText = t.metric;
+        document.getElementById('t-us-tab').innerText = t.us;
+        document.getElementById('t-age-lbl').innerText = t.age;
+        document.getElementById('t-h-lbl').innerText = t.height;
+        document.getElementById('t-w-lbl').innerText = t.weight;
+        document.getElementById('t-us-h-lbl').innerText = t.usH;
+        document.getElementById('t-us-w-lbl').innerText = t.usW;
+        document.getElementById('t-calc-btn').innerText = t.calc;
+        document.getElementById('t-clear-btn').innerText = t.clear;
+        document.getElementById('t-res-info').innerText = t.res;
+        if(document.getElementById('result-box').style.display === 'block') calculate();
+    }
+
+    function switchTab(mode) {
+        currentMode = mode;
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        event.target.classList.add('active');
+        document.getElementById('metric-inputs').style.display = mode === 'metric' ? 'block' : 'none';
+        document.getElementById('us-inputs').style.display = mode === 'us' ? 'block' : 'none';
+    }
+
+    function calculate() {
+        let bmi = 0;
+        if (currentMode === 'metric') {
+            let h = document.getElementById('m-height').value / 100;
+            let w = document.getElementById('m-weight').value;
+            if (h > 0 && w > 0) bmi = w / (h * h);
+        } else {
+            let f = parseInt(document.getElementById('us-feet').value) || 0;
+            let i = parseInt(document.getElementById('us-inch').value) || 0;
+            let w = document.getElementById('us-weight').value;
+            let totalInches = (f * 12) + i;
+            if (totalInches > 0 && w > 0) bmi = (w / (totalInches * totalInches)) * 703;
+        }
+
+        if (bmi > 0) {
+            const resBox = document.getElementById('result-box');
+            const resNum = document.getElementById('res-num');
+            const resText = document.getElementById('res-text');
+            const ptr = document.getElementById('ptr');
+            resBox.style.display = 'block';
+            resNum.innerText = bmi.toFixed(1);
+            
+            let pos = 0;
+            const t = translations[currentLang];
+            if (bmi < 18.5) { resText.innerText = t.under; pos = 10; }
+            else if (bmi < 25) { resText.innerText = t.normal; pos = 35; }
+            else if (bmi < 30) { resText.innerText = t.over; pos = 60; }
+            else { resText.innerText = t.obese; pos = 85; }
+            ptr.style.left = pos + '%';
+        } else {
+            alert(translations[currentLang].alert);
+        }
+    }
+
+    function clearFields() {
+        document.querySelectorAll('input').forEach(i => i.value = '');
+        document.getElementById('result-box').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
     </div>
 </div>
 
