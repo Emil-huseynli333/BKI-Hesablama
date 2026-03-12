@@ -43,10 +43,16 @@
 
         h1 { text-align: center; font-size: 28px; margin-bottom: 30px; color: #1a202c; border-bottom: 3px solid var(--primary-green); padding-bottom: 15px; }
 
+        .unit-toggle { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .unit-btn { padding: 6px 12px; border: 1px solid var(--border-color); background: #f8fafc; border-radius: 6px; cursor: pointer; font-size: 14px; transition: 0.2s; }
+        .unit-btn.active { background: var(--secondary-gray); color: white; }
+
         .input-row { margin-bottom: 20px; }
         .input-row label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 15px; }
         .input-row input { width: 100%; padding: 14px; border: 1px solid var(--border-color); border-radius: 12px; font-size: 16px; box-sizing: border-box; outline: none; }
         .input-row input:focus { border-color: var(--primary-green); box-shadow: 0 0 0 4px rgba(78, 125, 94, 0.1); }
+        
+        .dual-inputs { display: flex; gap: 10px; }
 
         .btn-box { display: flex; gap: 15px; margin-top: 30px; }
         .btn { flex: 1; padding: 16px; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
@@ -91,15 +97,27 @@
 
 <div class="app-container">
     <h1 id="t-h1">BKİ Hesablayıcı</h1>
+
+    <div class="unit-toggle">
+        <button class="unit-btn active" id="u-metric" onclick="setUnit('metric')">Metric (cm/kg)</button>
+        <button class="unit-btn" id="u-imperial" onclick="setUnit('imperial')">US (ft+in/lbs)</button>
+    </div>
     
     <div class="input-row">
         <label id="t-age">Yaşınız:</label>
         <input type="number" id="age" placeholder="Məs: 25">
     </div>
 
-    <div class="input-row">
+    <div class="input-row" id="height-container">
         <label id="t-height">Boyunuz (sm):</label>
         <input type="number" id="height" placeholder="Məs: 175">
+    </div>
+    <div class="input-row" id="height-imp-container" style="display:none;">
+        <label id="t-height-imp">Boyunuz (ft/in):</label>
+        <div class="dual-inputs">
+            <input type="number" id="ft" placeholder="ft">
+            <input type="number" id="in" placeholder="in">
+        </div>
     </div>
 
     <div class="input-row">
@@ -145,15 +163,18 @@
 <div class="footer-note" id="t-footer"></div>
 
 <script>
+    let currentLang = 'az';
+    let currentUnit = 'metric';
+
     const data = {
         az: {
             h1: "Bədən Kütlə İndeksi Hesablayıcı", age: "Yaşınız:", height: "Boyunuz (sm):", weight: "Çəkiniz (kq):", calc: "Hesabla", clear: "Təmizlə", res: "Sizin Nəticəniz:", footer: "Qeyd: Bu hesablama yalnız məlumat xarakterlidir və fərdi fiziki xüsusiyyətlərinizə görə dəyişə bilər.",
+            h_imp: "Boyunuz (ft/in):", w_imp: "Çəkiniz (lbs):",
             status: ["Ciddi Çəki Azlığı", "Çəki Azlığı", "Normal Çəki", "Artıq Çəki", "Piylənmə (I Dərəcə)", "Piylənmə (II Dərəcə)", "Morbid Piylənmə"],
             html: `
                 <h2>1. Bədən Kütlə İndeksi (BKİ) Nədir?</h2>
                 <p>Bədən Kütlə İndeksi (BKİ), fərdin çəkisinin boyuna olan nisbətini qiymətləndirmək üçün istifadə edilən praktik ölçü vahididir. Bu göstərici ümumi bədən quruluşunu anlamaq üçün əla başlanğıc nöqtəsidir.</p>
                 <div class="math-box">BKİ = Çəki (kq) / (Boy (m) * Boy (m))</div>
-
                 <h2>2. Standart BKİ Kateqoriyaları</h2>
                 <table>
                     <tr><th>Təsnifat</th><th>BKİ Aralığı</th></tr>
@@ -162,25 +183,22 @@
                     <tr><td>Artıq Çəki</td><td>25.0 - 30.0</td></tr>
                     <tr><td>Piylənmə</td><td> > 30.0 </td></tr>
                 </table>
-
                 <h2>3. Çəki Balansının Əhəmiyyəti</h2>
                 <p>Düzgün çəki aralığında olmaq gündəlik enerji səviyyəsinə və fiziki aktivliyə müsbət təsir göstərir. Artıq çəki adətən mexaniki yükün artması ilə nəticələnir.</p>
-
                 <h2>4. BMI Prime və Ponderal İndeksi</h2>
                 <p><strong>BMI Prime:</strong> Bu göstərici indeksin ideal yuxarı həddə (25) olan nisbətidir. <strong>Ponderal İndeksi:</strong> Boyun kubunu (kg/m³) istifadə edərək bədən quruluşunu daha dəqiq analiz edir.</p>
-
                 <h2>5. Gündəlik Aktivlik və Çəki Kontrolu</h2>
                 <p>BKİ tək başına hər şeyi ifadə etmir. Əzələ kütləsi və gündəlik idman vərdişləri bu rəqəmlərin necə qiymətləndirilməsinə təsir edir.</p>
             `
         },
         ru: {
             h1: "Калькулятор Индекса Массы Тела", age: "Ваш возраст:", height: "Ваш рост (см):", weight: "Ваш вес (кг):", calc: "Рассчитать", clear: "Очистить", res: "Ваш Результат:", footer: "Примечание: Данный расчет носит справочный характер и может варьироваться в зависимости от индивидуальных особенностей.",
+            h_imp: "Рост (фт/дюйм):", w_imp: "Вес (фунты):",
             status: ["Выраженный дефицит", "Дефицит веса", "Норма", "Избыточный вес", "Ожирение I", "Ожирение II", "Морбидное ожирение"],
             html: `
                 <h2>1. Что такое Индекс Массы Тела (ИМТ)?</h2>
                 <p>ИМТ — это практический способ оценки соотношения веса и роста человека. Этот метод широко используется для быстрого анализа физического состояния.</p>
                 <div class="math-box">ИМТ = Вес (кг) / (Рост (м) * Рост (м))</div>
-
                 <h2>2. Стандартные категории ИМТ</h2>
                 <table>
                     <tr><th>Классификация</th><th>Диапазон ИМТ</th></tr>
@@ -189,25 +207,22 @@
                     <tr><td>Избыточный вес</td><td>25.0 - 30.0</td></tr>
                     <tr><td>Ожирение</td><td> > 30.0 </td></tr>
                 </table>
-
                 <h2>3. Значение контроля веса</h2>
                 <p>Поддержание оптимального веса помогает сохранять высокую энергичность и физическую выносливость.</p>
-
                 <h2>4. BMI Prime и Индекс Пондераля</h2>
                 <p><strong>BMI Prime:</strong> Отношение ИМТ к верхнему пределу нормы (25). <strong>Индекс Пондераля:</strong> Метод, использующий куб роста для более точного анализа.</p>
-
                 <h2>5. Образ жизни и активность</h2>
                 <p>ИМТ сам по себе не учитывает мышечную массу. Спортсменам следует рассматривать его в сочетании с другими параметрами тела.</p>
             `
         },
         en: {
             h1: "BMI Calculator Online", age: "Your Age:", height: "Your Height (cm):", weight: "Your Weight (kg):", calc: "Calculate", clear: "Clear", res: "Your Result:", footer: "Note: This calculation is for informational purposes and may vary based on individual physical characteristics.",
+            h_imp: "Height (ft/in):", w_imp: "Weight (lbs):",
             status: ["Severe Thinness", "Underweight", "Normal Range", "Overweight", "Obese Class I", "Obese Class II", "Obese Class III"],
             html: `
                 <h2>1. What is Body Mass Index (BMI)?</h2>
                 <p>BMI is a practical measurement used to assess the relationship between a person's weight and height. It is a great starting point for understanding body composition.</p>
                 <div class="math-box">BMI = Weight (kg) / (Height (m) * Height (m))</div>
-
                 <h2>2. Standard BMI Categories</h2>
                 <table>
                     <tr><th>Classification</th><th>BMI Range</th></tr>
@@ -216,20 +231,16 @@
                     <tr><td>Overweight</td><td>25.0 - 30.0</td></tr>
                     <tr><td>Obesity</td><td> > 30.0 </td></tr>
                 </table>
-
                 <h2>3. Importance of Weight Balance</h2>
                 <p>Staying within a healthy weight range contributes to daily energy levels and physical performance.</p>
-
                 <h2>4. BMI Prime and Ponderal Index</h2>
                 <p><strong>BMI Prime:</strong> Ratio to the healthy upper limit (25). <strong>Ponderal Index:</strong> Uses height cubed (kg/m³) for body structure analysis.</p>
-
                 <h2>5. Lifestyle and Activity</h2>
                 <p>Factors like muscle mass and lifestyle habits play a significant role beyond just numbers.</p>
             `
         }
     };
 
-    let currentLang = 'az';
     function setLang(lang) {
         currentLang = lang;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
@@ -237,22 +248,49 @@
         const l = data[lang];
         document.getElementById('t-h1').innerText = l.h1;
         document.getElementById('t-age').innerText = l.age;
-        document.getElementById('t-height').innerText = l.height;
-        document.getElementById('t-weight').innerText = l.weight;
         document.getElementById('t-calc').innerText = l.calc;
         document.getElementById('t-clear').innerText = l.clear;
         document.getElementById('t-res-head').innerText = l.res;
         document.getElementById('t-footer').innerText = l.footer;
         document.getElementById('seo-area').innerHTML = l.html;
+        setUnit(currentUnit); 
+    }
+
+    function setUnit(unit) {
+        currentUnit = unit;
+        document.querySelectorAll('.unit-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(`u-${unit}`).classList.add('active');
+        const l = data[currentLang];
+
+        if(unit === 'metric') {
+            document.getElementById('height-container').style.display = 'block';
+            document.getElementById('height-imp-container').style.display = 'none';
+            document.getElementById('t-height').innerText = l.height;
+            document.getElementById('t-weight').innerText = l.weight;
+        } else {
+            document.getElementById('height-container').style.display = 'none';
+            document.getElementById('height-imp-container').style.display = 'block';
+            document.getElementById('t-height-imp').innerText = l.h_imp;
+            document.getElementById('t-weight').innerText = l.w_imp;
+        }
     }
 
     function calculate() {
-        const hIn = document.getElementById('height').value;
-        const wIn = document.getElementById('weight').value;
-        const h = hIn / 100;
-        const w = wIn;
-        if (h > 0.5 && w > 10) {
-            let bmi = w / (h * h);
+        let h_m, w_kg;
+        if(currentUnit === 'metric') {
+            const h_cm = document.getElementById('height').value;
+            w_kg = document.getElementById('weight').value;
+            h_m = h_cm / 100;
+        } else {
+            const ft = parseFloat(document.getElementById('ft').value) || 0;
+            const inch = parseFloat(document.getElementById('in').value) || 0;
+            const lbs = parseFloat(document.getElementById('weight').value) || 0;
+            h_m = ((ft * 12) + inch) * 0.0254;
+            w_kg = lbs * 0.453592;
+        }
+
+        if (h_m > 0.5 && w_kg > 10) {
+            let bmi = w_kg / (h_m * h_m);
             bmi = bmi.toFixed(1);
             document.getElementById('bmi-num').innerText = bmi;
             document.getElementById('res-panel').style.display = 'block';
