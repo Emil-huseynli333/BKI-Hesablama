@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W2GG8C5YXN"></script>
     <script>
@@ -11,13 +11,13 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator | Body Mass Index & Health Analysis Online</title>
-    <meta name="description" content="Calculate your Body Mass Index (BMI) online. Learn about weight categories, health risks, and tips for maintaining a healthy weight.">
+    <title>Калькулятор ИМТ | Индекс Массы Тела и Анализ Здоровья</title>
+    <meta name="description" content="Рассчитайте свой индекс массы тела (ИМТ) онлайн. Информация о категориях веса, рисках для здоровья и советы по идеальному весу.">
     
     <link rel="alternate" hreflang="az" href="https://www.bkihesablama.site/index.html" />
     <link rel="alternate" hreflang="en" href="https://www.bkihesablama.site/en.html" />
     <link rel="alternate" hreflang="ru" href="https://www.bkihesablama.site/ru.html" />
-    <link rel="canonical" href="https://www.bkihesablama.site/en.html" />
+    <link rel="canonical" href="https://www.bkihesablama.site/ru.html" />
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7563994232518889" crossorigin="anonymous"></script>
 
@@ -63,48 +63,48 @@
 
 <div class="lang-bar">
     <a href="index.html" class="lang-btn">Azərbaycan</a>
-    <a href="ru.html" class="lang-btn">Русский</a>
-    <a href="en.html" class="lang-btn active">English</a>
+    <a href="ru.html" class="lang-btn active">Русский</a>
+    <a href="en.html" class="lang-btn">English</a>
 </div>
 
 <div class="app-container">
-    <h1>BMI Calculator</h1>
+    <h1>Калькулятор ИМТ</h1>
     <div class="unit-toggle">
-        <button class="unit-btn active" id="u-metric" onclick="setUnit('metric')">Metric (cm/kg)</button>
-        <button class="unit-btn" id="u-imperial" onclick="setUnit('imperial')">US (ft+in/lbs)</button>
+        <button class="unit-btn active" id="u-metric" onclick="setUnit('metric')">Метрическая (см/кг)</button>
+        <button class="unit-btn" id="u-imperial" onclick="setUnit('imperial')">США (фт+дюйм/фунт)</button>
     </div>
     
     <div class="input-row">
-        <label>Age:</label>
-        <input type="number" id="age" placeholder="e.g.: 25">
+        <label>Возраст:</label>
+        <input type="number" id="age" placeholder="Например: 25">
     </div>
 
     <div class="input-row" id="height-container">
-        <label>Height (cm):</label>
-        <input type="number" id="height" placeholder="e.g.: 175">
+        <label>Рост (см):</label>
+        <input type="number" id="height" placeholder="Например: 175">
     </div>
     <div class="input-row" id="height-imp-container" style="display:none;">
-        <label>Height (ft/in):</label>
+        <label>Рост (фут/дюйм):</label>
         <div class="dual-inputs">
-            <input type="number" id="ft" placeholder="ft">
-            <input type="number" id="in" placeholder="in">
+            <input type="number" id="ft" placeholder="фт">
+            <input type="number" id="in" placeholder="дюйм">
         </div>
     </div>
 
     <div class="input-row">
-        <label id="t-weight">Weight (kg):</label>
-        <input type="number" id="weight" placeholder="e.g.: 70">
+        <label id="t-weight">Вес (кг):</label>
+        <input type="number" id="weight" placeholder="Например: 70">
     </div>
 
     <div class="btn-box">
-        <button class="btn btn-main" onclick="calculate()">Calculate</button>
-        <button class="btn btn-alt" onclick="clearUI()">Clear</button>
+        <button class="btn btn-main" onclick="calculate()">Рассчитать</button>
+        <button class="btn btn-alt" onclick="clearUI()">Очистить</button>
     </div>
 
     <div class="result-panel" id="res-panel">
-        <p style="color:#718096; font-weight:600;">Analysis Result:</p>
+        <p style="color:#718096; font-weight:600;">Результат анализа:</p>
         <div class="bmi-val" id="bmi-num">0</div>
-        <div class="bmi-cat" id="bmi-status">Normal</div>
+        <div class="bmi-cat" id="bmi-status">Норма</div>
         <div class="gauge-wrapper">
             <div id="gauge-labels-container" class="gauge-labels"></div>
             <div class="gauge-bar" id="gauge-bar"></div>
@@ -115,51 +115,51 @@
 
 <div class="scientific-content">
     <div class="article-card">
-        <h2>1. What is Body Mass Index (BMI)?</h2>
-        <p>Body Mass Index (BMI) is a simple index of weight-for-height that is commonly used to classify underweight, overweight and obesity in adults. It is defined as a person's weight in kilograms divided by the square of his height in meters (kg/m²).</p>
+        <h2>1. Что такое Индекс Массы Тела (ИМТ)?</h2>
+        <p>Индекс массы тела (ИМТ) — это международный показатель, используемый для оценки соответствия массы человека его росту. По данным Всемирной организации здравоохранения (ВОЗ), этот расчет позволяет определить, является ли вес человека недостаточным, нормальным или избыточным.</p>
         
-        <div class="math-box">Formula: BMI = Weight (kg) / (Height (m) * Height (m))</div>
+        <div class="math-box">Формула: ИМТ = Вес (кг) / (Рост (м) * Рост (м))</div>
 
-        <h2>2. BMI Classification and Health Risks</h2>
-        <p>The calculation results are categorized into the following ranges according to WHO standards:</p>
+        <h2>2. Классификация результатов и риски</h2>
+        <p>Результаты расчетов делятся на следующие категории:</p>
         <table>
-            <tr><th>Classification</th><th>BMI Range</th><th>Health Risk</th></tr>
-            <tr><td>Underweight</td><td> < 18.5 </td><td>Weakened immunity</td></tr>
-            <tr><td><strong>Normal weight</strong></td><td><strong>18.5 - 24.9</strong></td><td><strong>Minimal risk</strong></td></tr>
-            <tr><td>Overweight</td><td>25.0 - 29.9</td><td>Moderate risk</td></tr>
-            <tr><td>Obesity (Class I)</td><td>30.0 - 34.9</td><td>High risk</td></tr>
-            <tr><td>Morbid Obesity</td><td> > 40.0 </td><td>Very high risk</td></tr>
+            <tr><th>Классификация</th><th>Диапазон ИМТ</th><th>Риск для здоровья</th></tr>
+            <tr><td>Дефицит массы</td><td> < 18.5 </td><td>Снижение иммунитета</td></tr>
+            <tr><td><strong>Нормальный вес</strong></td><td><strong>18.5 - 24.9</strong></td><td><strong>Минимальный риск</strong></td></tr>
+            <tr><td>Избыточный вес</td><td>25.0 - 29.9</td><td>Средний риск</td></tr>
+            <tr><td>Ожирение (I степень)</td><td>30.0 - 34.9</td><td>Высокий риск</td></tr>
+            <tr><td>Морбидное ожирение</td><td> > 40.0 </td><td>Очень высокий риск</td></tr>
         </table>
 
-        <h2>3. Limitations of BMI: What It Doesn't Measure</h2>
-        <p>While BMI is a useful screening tool, it does not diagnose body fatness or health. For example, athletes with high muscle mass may have a high BMI without having excess body fat. It also varies by age and pregnancy status. Therefore, it should be used as a general guide rather than a clinical diagnosis.</p>
+        <h2>3. Ограничения ИМТ: Что важно знать?</h2>
+        <p>Хотя ИМТ является удобным инструментом, он имеет свои ограничения. Например, у профессиональных спортсменов с большой мышечной массой ИМТ может быть высоким, но это не означает наличие лишнего жира. Также показатели могут отличаться для пожилых людей и беременных женщин.</p>
 
-        <h2>4. How to Reach a Healthy Weight?</h2>
+        <h2>4. Как достичь здорового веса?</h2>
         <ul>
-            <li><strong>Balanced Diet:</strong> Calorie intake should match your daily energy expenditure.</li>
-            <li><strong>Physical Activity:</strong> At least 150 minutes of moderate-intensity aerobic activity per week is recommended.</li>
-            <li><strong>Hydration:</strong> Drinking enough water is essential for a healthy metabolism.</li>
+            <li><strong>Сбалансированное питание:</strong> Потребление калорий должно соответствовать вашим энергозатратам.</li>
+            <li><strong>Физическая активность:</strong> Рекомендуется не менее 150 минут умеренной аэробной активности в неделю.</li>
+            <li><strong>Водный баланс:</strong> Достаточное потребление воды важно для здорового обмена веществ.</li>
         </ul>
 
-        <h2>5. Why Use Our BMI Calculator?</h2>
-        <p>Our online tool supports both Metric (cm/kg) and Imperial (ft/lbs) systems for global convenience. It is fast, secure, and completely free to use, providing instant analysis of your body mass index.</p>
+        <h2>5. Почему стоит использовать наш калькулятор?</h2>
+        <p>Наш онлайн-инструмент поддерживает как метрическую (см/кг), так и имперскую (футы/фунты) системы. Это удобно для пользователей со всего мира. Сайт работает быстро, безопасно и полностью бесплатен.</p>
     </div>
 </div>
 
 <div class="footer-note">
-    Disclaimer: The BMI calculations provided on this site are for informational purposes only. Consult a doctor for professional medical advice or diet plans.
+    Примечание: Расчеты ИМТ на этом сайте носят ознакомительный характер. Для получения медицинских рекомендаций проконсультируйтесь с врачом.
 </div>
 
 <div class="footer-links">
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
+    <a href="about.html">О нас</a>
+    <a href="contact.html">Контакты</a>
+    <a href="privacy.html">Политика конфиденциальности</a>
+    <a href="terms.html">Условия использования</a>
 </div>
 
 <script>
     let currentUnit = 'metric';
-    const statusText = ["Severe Underweight", "Underweight", "Normal Weight", "Overweight", "Obese (Class I)", "Obese (Class II)", "Morbidly Obese"];
+    const statusText = ["Выраженный дефицит", "Дефицит массы", "Норма", "Избыточный вес", "Ожирение (I ст.)", "Ожирение (II ст.)", "Морбидное ожирение"];
 
     function setUnit(unit) {
         currentUnit = unit;
@@ -168,11 +168,11 @@
         if(unit === 'metric') {
             document.getElementById('height-container').style.display = 'block';
             document.getElementById('height-imp-container').style.display = 'none';
-            document.getElementById('t-weight').innerText = "Weight (kg):";
+            document.getElementById('t-weight').innerText = "Ваш вес (кг):";
         } else {
             document.getElementById('height-container').style.display = 'none';
             document.getElementById('height-imp-container').style.display = 'block';
-            document.getElementById('t-weight').innerText = "Weight (lbs):";
+            document.getElementById('t-weight').innerText = "Ваш вес (фунты):";
         }
     }
 
