@@ -1,3 +1,4 @@
+elaqe.html
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -8,126 +9,64 @@
       gtag('js', new Date());
       gtag('config', 'G-W2GG8C5YXN');
     </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Əlaqə | BKİ Hesablayıcı</title>
     <style>
-        :root {
-            --primary-green: #4e7d5e;
-            --bg-light: #f4f7f6;
-            --text-main: #2d3748;
-            --border-color: #e2e8f0;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .container {
-            background: white;
-            width: 100%;
-            max-width: 700px;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
+        :root { --primary-green: #4e7d5e; --bg-light: #f4f7f6; --text-main: #2d3748; --border-color: #e2e8f0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-main); margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; line-height: 1.6; }
+        .lang-bar { display: flex; gap: 8px; margin-bottom: 20px; }
+        .lang-btn { padding: 6px 12px; border: 1px solid #ddd; background: white; border-radius: 6px; cursor: pointer; font-size: 13px; }
+        .lang-btn.active { background: var(--primary-green); color: white; border-color: var(--primary-green); }
+        .container { background: white; width: 100%; max-width: 700px; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); box-sizing: border-box; }
         h1 { color: #1a202c; border-bottom: 3px solid var(--primary-green); padding-bottom: 10px; margin-bottom: 25px; }
-        p { color: #4a5568; margin-bottom: 20px; }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .contact-card {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-        }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .contact-card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; }
         .contact-card strong { display: block; color: var(--primary-green); margin-bottom: 8px; }
         .contact-card a { color: var(--text-main); text-decoration: none; font-weight: 500; word-break: break-all; }
-        .contact-card a:hover { color: var(--primary-green); }
-
         .form-group { margin-bottom: 15px; text-align: left; }
         label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px; }
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            box-sizing: border-box;
-            outline: none;
-            font-family: inherit;
-        }
-        input:focus, textarea:focus { border-color: var(--primary-green); }
-        
-        .send-btn {
-            background: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.3s;
-        }
-        .send-btn:hover { background: #3d634a; }
-
+        input, textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; box-sizing: border-box; outline: none; font-family: inherit; }
+        .send-btn { background: var(--primary-green); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px; }
         .back-link { display: inline-block; margin-top: 30px; color: var(--primary-green); text-decoration: none; font-weight: bold; }
-
-        @media (max-width: 600px) {
-            .contact-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Bizimlə Əlaqə</h1>
-    <p>Suallarınız və ya texniki dəstək üçün aşağıdakı kanallar vasitəsilə bizimlə əlaqə saxlaya bilərsiniz. Müraciətlərinizə ən qısa zamanda cavab veriləcəkdir.</p>
-
-    <div class="contact-grid">
-        <div class="contact-card">
-            <strong>E-poçt Ünvanımız</strong>
-            <a href="mailto:tncstudioresmi@gmail.com">tncstudioresmi@gmail.com</a>
-        </div>
-        <div class="contact-card">
-            <strong>Instagram</strong>
-            <a href="https://www.instagram.com/tncstudioresmi" target="_blank">@tncstudioresmi</a>
-        </div>
-    </div>
-
-    <div style="background: #fff; border: 1px solid var(--border-color); padding: 25px; border-radius: 15px;">
-        <h3 style="margin-top: 0;">Mesaj Göndərin</h3>
-        <form action="https://formspree.io/f/xjgarzre" method="POST">
-            <div class="form-group">
-                <label>Adınız və Soyadınız</label>
-                <input type="text" name="name" required placeholder="Məs: Emil ...">
-            </div>
-            <div class="form-group">
-                <label>E-poçt ünvanınız</label>
-                <input type="email" name="email" required placeholder="nümunə@gmail.com">
-            </div>
-            <div class="form-group">
-                <label>Mesajınız</label>
-                <textarea name="message" rows="4" required placeholder="Sualınızı bura yazın..."></textarea>
-            </div>
-            <button type="submit" class="send-btn">Göndər</button>
-        </form>
-    </div>
-
-    <a href="index.html" class="back-link">← Ana Səhifəyə Qayıt</a>
+<div class="lang-bar">
+    <button class="lang-btn active" id="btn-az" onclick="setLang('az')">Azərbaycan</button>
+    <button class="lang-btn" id="btn-ru" onclick="setLang('ru')">Русский</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
 </div>
-
+<div class="container" id="content-area"></div>
+<script>
+    const data = {
+        az: { h1: "Bizimlə Əlaqə", p: "Suallarınız və ya texniki dəstək üçün aşağıdakı kanallar vasitəsilə bizimlə əlaqə saxlaya bilərsiniz. Müraciətlərinizə ən qısa zamanda cavab veriləcəkdir.", email: "E-poçt Ünvanımız", insta: "Instagram Hesabımız", name: "Adınız və Soyadınız", mailLabel: "E-poçt ünvanınız", msg: "Mesajınız", btn: "Göndər", back: "← Ana Səhifəyə Qayıt", h3: "Mesaj Göndərin" },
+        ru: { h1: "Связаться с нами", p: "Вы можете связаться с нами для вопросов или технической поддержки через указанные каналы. Мы ответим на ваш запрос в кратчайшие сроки.", email: "Наш E-mail", insta: "Наш Instagram", name: "Ваше имя и фамилия", mailLabel: "Ваш E-mail", msg: "Ваше сообщение", btn: "Отправить", back: "← На главную", h3: "Отправить сообщение" },
+        en: { h1: "Contact Us", p: "You can contact us for questions or technical support through the channels below. We will respond to your inquiries as soon as possible.", email: "Our E-mail", insta: "Our Instagram", name: "Full Name", mailLabel: "Your E-mail", msg: "Your Message", btn: "Send", back: "← Back to Home", h3: "Send a Message" }
+    };
+    function setLang(lang) {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(`btn-${lang}`).classList.add('active');
+        const l = data[lang];
+        document.getElementById('content-area').innerHTML = `
+            <h1>${l.h1}</h1><p>${l.p}</p>
+            <div class="contact-grid">
+                <div class="contact-card"><strong>${l.email}</strong><a href="mailto:tncstudioresmi@gmail.com">tncstudioresmi@gmail.com</a></div>
+                <div class="contact-card"><strong>${l.insta}</strong><a href="https://www.instagram.com/tncstudioresmi" target="_blank">@tncstudioresmi</a></div>
+            </div>
+            <div style="background: #fff; border: 1px solid var(--border-color); padding: 25px; border-radius: 15px;">
+                <h3 style="margin-top: 0;">${l.h3}</h3>
+                <form action="https://formspree.io/f/xjgarzre" method="POST">
+                    <div class="form-group"><label>${l.name}</label><input type="text" name="name" required></div>
+                    <div class="form-group"><label>${l.mailLabel}</label><input type="email" name="email" required></div>
+                    <div class="form-group"><label>${l.msg}</label><textarea name="message" rows="4" required></textarea></div>
+                    <button type="submit" class="send-btn">${l.btn}</button>
+                </form>
+            </div>
+            <a href="index.html" class="back-link">${l.back}</a>`;
+    }
+    window.onload = () => setLang('az');
+</script>
 </body>
 </html>
