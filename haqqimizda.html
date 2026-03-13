@@ -1,3 +1,4 @@
+haqqimizda.html
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -24,10 +25,15 @@
             color: var(--text-main);
             margin: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
             line-height: 1.8;
         }
+        .lang-bar { display: flex; gap: 8px; margin-bottom: 20px; }
+        .lang-btn { padding: 8px 15px; border: 1px solid #ddd; background: white; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; transition: 0.3s; }
+        .lang-btn.active { background: var(--primary-green); color: white; border-color: var(--primary-green); }
+        
         .container {
             background: white;
             width: 100%;
@@ -35,82 +41,101 @@
             padding: 50px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            box-sizing: border-box;
         }
-        h1 {
-            color: #1a202c;
-            font-size: 32px;
-            border-bottom: 3px solid var(--primary-green);
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: var(--primary-green);
-            font-size: 22px;
-            margin-top: 30px;
-        }
-        p {
-            font-size: 16px;
-            color: #4a5568;
-            margin-bottom: 20px;
-        }
-        .mission-box {
-            background: #f0fdf4;
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 5px solid var(--primary-green);
-            margin: 30px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-            color: #4a5568;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 12px 25px;
-            background: var(--primary-green);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .back-btn:hover {
-            background: #3d634a;
-            transform: translateY(-2px);
-        }
+        h1 { color: #1a202c; font-size: 32px; border-bottom: 3px solid var(--primary-green); padding-bottom: 15px; margin-bottom: 30px; }
+        h2 { color: var(--primary-green); font-size: 22px; margin-top: 30px; }
+        .mission-box { background: #f0fdf4; padding: 25px; border-radius: 15px; border-left: 5px solid var(--primary-green); margin: 30px 0; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        .back-btn { display: inline-block; margin-top: 40px; padding: 12px 25px; background: var(--primary-green); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; transition: 0.3s; }
+        .back-btn:hover { background: #3d634a; transform: translateY(-2px); }
+        
+        @media (max-width: 600px) { .container { padding: 25px; } h1 { font-size: 24px; } }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Haqqımızda</h1>
-    
-    <p><strong>Praktik BKİ Hesablayıcı</strong>, istifadəçilərin fiziki sağlamlıq göstəricilərini asanlıqla izləyə bilməsi üçün yaradılmış onlayn platformadır. Bizim məqsədimiz, mürəkkəb hesablamaları sadələşdirərək hər kəs üçün əlçatan etməkdir.</p>
-
-    <div class="mission-box">
-        <strong>Missiyamız:</strong> Texnologiyanın gücündən istifadə edərək, insanların öz bədən quruluşları haqqında elmi əsaslı məlumatlara sürətli çıxışını təmin etmək və sağlam həyat tərzinə keçid prosesini dəstəkləməkdir.
-    </div>
-
-    <h2>Niyə Bizim Hesablayıcı?</h2>
-    <p>İnternetdə bir çox bənzər alət olsa da, biz bir neçə əsas prinsipə fokuslanmışıq:</p>
-    <ul>
-        <li><strong>Dəqiqlik:</strong> Ümumdünya Səhiyyə Təşkilatının (ÜST) təqdim etdiyi standart düsturlar əsasında hesablama.</li>
-        <li><strong>Çoxdillilik:</strong> Azərbaycan, Rus və İngilis dillərində tam dəstək təqdim edərək qlobal istifadəçi kütləsinə xidmət.</li>
-        <li><strong>İstifadəçi Təcrübəsi:</strong> Həm metrik, həm də imperiyal (ABŞ) vahid sistemləri ilə saniyələr içində nəticə alma imkanı.</li>
-        <li><strong>Elmi Yanaşma:</strong> Sadəcə rəqəmlər deyil, eyni zamanda BMI Prime və Ponderal İndeksi kimi dərin analizlərin təqdimatı.</li>
-    </ul>
-
-    <h2>Layihəmiz Haqqında</h2>
-    <p>Bu layihə fərdi təşəbbüs olaraq başlamışdır və daim inkişaf etdirilir. Saytımızda istifadə olunan bütün alqoritmlər tibbi standartlara uyğundur, lakin unutmayın ki, BKİ göstəriciləri yalnız ümumi məlumat xarakterlidir. Tam diaqnoz üçün mütəxəssis həkim rəyi vacibdir.</p>
-
-    <p>Biz şəffaflığa önəm veririk. Saytımızın fəaliyyətini davam etdirməsi üçün Google AdSense reklamlarından istifadə edirik və istifadəçi davranışını analiz etmək üçün Google Analytics vasitəsilə anonim məlumatlar toplayırıq.</p>
-
-    <a href="index.html" class="back-btn">← Hesablayıcıya Qayıt</a>
+<div class="lang-bar">
+    <button class="lang-btn active" id="btn-az" onclick="setLang('az')">Azərbaycan</button>
+    <button class="lang-btn" id="btn-ru" onclick="setLang('ru')">Русский</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
 </div>
 
+<div class="container" id="content-area">
+    </div>
+
+<script>
+    const data = {
+        az: {
+            title: "Haqqımızda | Praktik BKİ Hesablayıcı",
+            back: "← Hesablayıcıya Qayıt",
+            html: `
+                <h1>Haqqımızda</h1>
+                <p><strong>Praktik BKİ Hesablayıcı</strong>, istifadəçilərin fiziki sağlamlıq göstəricilərini asanlıqla izləyə bilməsi üçün yaradılmış onlayn platformadır. Bizim məqsədimiz, mürəkkəb hesablamaları sadələşdirərək hər kəs üçün əlçatan etməkdir.</p>
+                <div class="mission-box"><strong>Missiyamız:</strong> Texnologiyanın gücündən istifadə edərək, insanların öz bədən quruluşları haqqında elmi əsaslı məlumatlara sürətli çıxışını təmin etmək və sağlam həyat tərzinə keçid prosesini dəstəkləməkdir.</div>
+                <h2>Niyə Bizim Hesablayıcı?</h2>
+                <ul>
+                    <li><strong>Dəqiqlik:</strong> Ümumdünya Səhiyyə Təşkilatının (ÜST) təqdim etdiyi standart düsturlar əsasında hesablama.</li>
+                    <li><strong>Çoxdillilik:</strong> Azərbaycan, Rus və İngilis dillərində tam dəstək.</li>
+                    <li><strong>İstifadəçi Təcrübəsi:</strong> Həm metrik, həm də imperiyal vahidlərlə saniyələr içində nəticə.</li>
+                    <li><strong>Elmi Yanaşma:</strong> BMI Prime və Ponderal İndeksi kimi dərin analizlər.</li>
+                </ul>
+                <h2>Layihəmiz Haqqında</h2>
+                <p>Bu layihə fərdi təşəbbüs olaraq başlamışdır və daim inkişaf etdirilir. Saytımızda istifadə olunan bütün alqoritmlər tibbi standartlara uyğundur, lakin nəticələr yalnız məlumat xarakterlidir. Tam diaqnoz üçün mütəxəssis həkim rəyi vacibdir.</p>
+                <p>Saytımızın fəaliyyətini davam etdirməsi üçün Google AdSense reklamlarından istifadə edirik və Google Analytics vasitəsilə anonim məlumatlar toplayırıq.</p>
+            `
+        },
+        ru: {
+            title: "О нас | Практичный калькулятор ИМТ",
+            back: "← Вернуться к калькулятору",
+            html: `
+                <h1>О нас</h1>
+                <p><strong>Практичный калькулятор ИМТ</strong> — это онлайн-платформа, созданная для того, чтобы пользователи могли легко отслеживать показатели своего физического здоровья. Наша цель — упростить сложные вычисления и сделать их доступными для каждого.</p>
+                <div class="mission-box"><strong>Наша миссия:</strong> Используя возможности технологий, обеспечить быстрый доступ к научно обоснованной информации о строении тела и поддержать процесс перехода к здоровому образу жизни.</div>
+                <h2>Почему наш калькулятор?</h2>
+                <ul>
+                    <li><strong>Точность:</strong> Расчет на основе стандартных формул Всемирной организации здравоохранения (ВОЗ).</li>
+                    <li><strong>Многоязычность:</strong> Полная поддержка на азербайджанском, русском и английском языках.</li>
+                    <li><strong>Пользовательский опыт:</strong> Получение результатов за секунды как в метрической, так и в имперской системах.</li>
+                    <li><strong>Научный подход:</strong> Глубокий анализ, такой как BMI Prime и индекс Пондераля.</li>
+                </ul>
+                <h2>О нашем проекте</h2>
+                <p>Этот проект начался как частная инициатива и постоянно развивается. Все алгоритмы соответствуют медицинским стандартам, но результаты носят информационный характер. Для полной диагностики важна консультация специалиста.</p>
+                <p>Мы используем рекламу Google AdSense для поддержания работы сайта и собираем анонимные данные через Google Analytics.</p>
+            `
+        },
+        en: {
+            title: "About Us | Practical BMI Calculator",
+            back: "← Back to Calculator",
+            html: `
+                <h1>About Us</h1>
+                <p><strong>Practical BMI Calculator</strong> is an online platform created to help users easily track their physical health indicators. Our goal is to simplify complex calculations and make them accessible to everyone.</p>
+                <div class="mission-box"><strong>Our Mission:</strong> To use the power of technology to provide rapid access to science-based information about body composition and to support the transition to a healthy lifestyle.</div>
+                <h2>Why Our Calculator?</h2>
+                <ul>
+                    <li><strong>Accuracy:</strong> Calculation based on standard formulas provided by the World Health Organization (WHO).</li>
+                    <li><strong>Multilingualism:</strong> Full support in Azerbaijani, Russian, and English.</li>
+                    <li><strong>User Experience:</strong> Results in seconds using both metric and imperial (US) units.</li>
+                    <li><strong>Scientific Approach:</strong> Deep analysis including BMI Prime and Ponderal Index.</li>
+                </ul>
+                <h2>About Our Project</h2>
+                <p>This project started as an individual initiative and is constantly being developed. All algorithms used on our site comply with medical standards, but results are for informational purposes only. Professional medical advice is essential for a full diagnosis.</p>
+                <p>We use Google AdSense ads to maintain our site and collect anonymous data through Google Analytics.</p>
+            `
+        }
+    };
+
+    function setLang(lang) {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(`btn-${lang}`).classList.add('active');
+        const l = data[lang];
+        document.getElementById('content-area').innerHTML = l.html + `<a href="index.html" class="back-btn">${l.back}</a>`;
+        document.title = l.title;
+        document.documentElement.lang = lang;
+    }
+
+    window.onload = () => setLang('az');
+</script>
 </body>
 </html>
