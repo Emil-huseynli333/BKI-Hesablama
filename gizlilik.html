@@ -1,3 +1,4 @@
+gizlilik.html
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -8,76 +9,54 @@
       gtag('js', new Date());
       gtag('config', 'G-W2GG8C5YXN');
     </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gizlilik Siyasəti | BKİ Hesablayıcı</title>
     <style>
-        :root {
-            --primary-green: #4e7d5e;
-            --bg-light: #f4f7f6;
-            --text-main: #2d3748;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .container {
-            background: white;
-            width: 100%;
-            max-width: 800px;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-        h1 { color: #1a202c; border-bottom: 3px solid var(--primary-green); padding-bottom: 10px; }
-        h2 { color: var(--primary-green); margin-top: 25px; font-size: 20px; }
-        p, li { color: #4a5568; font-size: 15px; }
-        ul { padding-left: 20px; }
-        .footer-link { display: inline-block; margin-top: 30px; color: var(--primary-green); text-decoration: none; font-weight: bold; }
+        :root { --primary-green: #4e7d5e; --bg-light: #f4f7f6; --text-main: #2d3748; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-main); margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; line-height: 1.8; }
+        .lang-bar { display: flex; gap: 8px; margin-bottom: 20px; }
+        .lang-btn { padding: 6px 12px; border: 1px solid #ddd; background: white; border-radius: 6px; cursor: pointer; font-size: 13px; }
+        .lang-btn.active { background: var(--primary-green); color: white; border-color: var(--primary-green); }
+        .container { background: white; width: 100%; max-width: 800px; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); box-sizing: border-box; }
+        h1 { color: #1a202c; border-bottom: 3px solid var(--primary-green); padding-bottom: 10px; margin-bottom: 25px; }
+        h2 { color: var(--primary-green); font-size: 20px; margin-top: 25px; }
+        p { font-size: 15px; color: #4a5568; }
+        .back-link { display: inline-block; margin-top: 30px; color: var(--primary-green); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Gizlilik Siyasəti</h1>
-    <p>Son yenilənmə: 13 Mart 2026</p>
-
-    <p><strong>bkihesablama.site</strong> olaraq gizliliyiniz bizim üçün vacibdir. Bu sənəd, saytımızı istifadə edərkən hansı növ məlumatların toplandığını və onların necə qorunduğunu izah edir.</p>
-
-    <h2>1. Toplanan Məlumatlar</h2>
-    <p>Saytımızda fərdi şəxsiyyəti müəyyən edən məlumatlar (ad, soyad, ünvan) tələb olunmur. Hesablamalar zamanı daxil etdiyiniz yaş, boy və çəki məlumatları yalnız nəticəni hesablamaq üçün istifadə olunur və serverlərimizdə saxlanılmır.</p>
-
-    <h2>2. Log Faylları</h2>
-    <p>Bir çox standart veb-sayt kimi, biz də log fayllarından istifadə edirik. Bu fayllara IP ünvanı, brauzer növü, İnternet Xidmət Provayderi (ISP), sayta giriş/çıxış səhifələri və klik sayı daxildir. Bu məlumatlar şəxsiyyəti müəyyən etmək üçün deyil, trendləri analiz etmək və saytı idarə etmək üçündür.</p>
-
-    <h2>3. Kukilər (Cookies) və Veb İşarətləri</h2>
-    <p>Saytımız istifadəçi seçimlərini yadda saxlamaq və ziyarətçi təcrübəsini təkmilləşdirmək üçün kukilərdən istifadə edir.</p>
-
-    <h2>4. Google DoubleClick DART Kukisi</h2>
-    <ul>
-        <li>Google, saytımızda reklam göstərmək üçün üçüncü tərəf satıcı olaraq kukilərdən istifadə edir.</li>
-        <li>Google-un DART kuki istifadəsi, istifadəçilərimizə bu sayta və internetdəki digər saytlara etdikləri ziyarətlərə əsasən reklam təqdim etməsinə imkan verir.</li>
-        <li>İstifadəçilər Google reklam və məzmun şəbəkəsi gizlilik siyasətini ziyarət edərək DART kuki istifadəsindən imtina edə bilərlər.</li>
-    </ul>
-
-    <h2>5. Reklam Partnyorlarımız</h2>
-    <p>Reklam partnyorlarımızdan biri olan <strong>Google AdSense</strong>, kuki və veb işarətlərindən istifadə edə bilər. Üçüncü tərəf reklam serverləri və ya reklam şəbəkələri, brauzerinizə göndərilən reklamların effektivliyini ölçmək üçün bu texnologiyalardan istifadə edir. <strong>bkihesablama.site</strong> bu kukilərə müdaxilə etmək səlahiyyətinə malik deyil.</p>
-
-    <h2>6. Üçüncü Tərəf Gizlilik Siyasətləri</h2>
-    <p>Saytımızın gizlilik siyasəti digər reklam verənlərə və ya veb-saytlara şamil edilmir. Daha ətraflı məlumat üçün həmin üçüncü tərəf reklam serverlərinin müvafiq gizlilik siyasətləri ilə tanış olmağınız tövsiyə olunur.</p>
-
-    <h2>7. Razılıq</h2>
-    <p>Saytımızı istifadə edərək, Gizlilik Siyasətimizlə razılaşmış sayılırsınız.</p>
-
-    <a href="index.html" class="footer-link">← Ana Səhifəyə Qayıt</a>
+<div class="lang-bar">
+    <button class="lang-btn active" id="btn-az" onclick="setLang('az')">Azərbaycan</button>
+    <button class="lang-btn" id="btn-ru" onclick="setLang('ru')">Русский</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
 </div>
-
+<div class="container" id="content-area"></div>
+<script>
+    const data = {
+        az: { h1: "Gizlilik Siyasəti", back: "← Ana Səhifəyə Qayıt", html: `
+            <p><strong>bkihesablama.site</strong> olaraq istifadəçilərimizin gizliliyi bizim üçün önəmlidir.</p>
+            <h2>1. Toplanan Məlumatlar</h2><p>Saytımız istifadəçilərdən heç bir şəxsi identifikasiya məlumatı (ad, telefon və s.) tələb etmir və saxlamır. Hesablamalar zamanı daxil edilən yaş, boy və çəki məlumatları yalnız nəticəni göstərmək üçün istifadə olunur və serverlərimizdə qeyd edilmir.</p>
+            <h2>2. Google AdSense və Kukilər</h2><p>Saytımızda göstərilən reklamlar Google tərəfindən idarə olunur. Google reklamları sizin maraqlarınıza uyğunlaşdırmaq üçün kukilərdən (cookies) istifadə edə bilər.</p>
+            <h2>3. Üçüncü Tərəf Keçidləri</h2><p>Saytımızda digər resurslara keçidlər ola bilər. Həmin saytların gizlilik siyasətinə görə məsuliyyət daşımırıq.</p>` },
+        ru: { h1: "Политика конфиденциальности", back: "← На главную", html: `
+            <p>Конфиденциальность наших пользователей важна для <strong>bkihesablama.site</strong>.</p>
+            <h2>1. Собираемые данные</h2><p>Наш сайт не требует и не хранит личную идентификационную информацию (имя, телефон и т.д.). Данные о возрасте, росте и весе, вводимые при расчетах, используются только для вывода результата и не сохраняются на серверах.</p>
+            <h2>2. Google AdSense и файлы cookie</h2><p>Объявления на сайте управляются Google. Google может использовать файлы cookie для настройки рекламы в соответствии с вашими интересами.</p>
+            <h2>3. Сторонние ссылки</h2><p>Наш сайт может содержать ссылки на другие ресурсы. Мы не несем ответственности за политику конфиденциальности этих сайтов.</p>` },
+        en: { h1: "Privacy Policy", back: "← Back to Home", html: `
+            <p>Privacy of our users is important for <strong>bkihesablama.site</strong>.</p>
+            <h2>1. Data Collection</h2><p>Our site does not require or store personal identification information (name, phone, etc.). Age, height, and weight data entered during calculations are used only to show results and are not recorded on our servers.</p>
+            <h2>2. Google AdSense and Cookies</h2><p>Ads on the site are managed by Google. Google may use cookies to customize ads according to your interests.</p>
+            <h2>3. Third-Party Links</h2><p>Our site may contain links to other resources. We are not responsible for the privacy policies of those sites.</p>` }
+    };
+    function setLang(lang) {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(`btn-${lang}`).classList.add('active');
+        const l = data[lang];
+        document.getElementById('content-area').innerHTML = `<h1>${l.h1}</h1>${l.html}<a href="index.html" class="back-link">${l.back}</a>`;
+    }
+    window.onload = () => setLang('az');
+</script>
 </body>
 </html>
