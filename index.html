@@ -92,8 +92,28 @@
 
         .math-box { background: #f0fdf4; padding: 25px; border-radius: 15px; border: 1px solid #dcfce7; font-family: 'Courier New', monospace; font-weight: bold; text-align: center; margin: 25px 0; }
         
-        .footer-note { font-size: 13px; color: #a0aec0; text-align: center; margin: 50px 0; line-height: 1.5; max-width: 700px; }
+        .footer-note { font-size: 13px; color: #a0aec0; text-align: center; margin: 50px 0 20px 0; line-height: 1.5; max-width: 700px; }
         .ad-spacer { margin: 30px 0; width: 100%; max-width: 650px; text-align: center; min-height: 100px; }
+
+        /* Yeni Footer Menyu Dizaynı */
+        .footer-links { 
+            display: flex; 
+            gap: 20px; 
+            margin-bottom: 40px; 
+            flex-wrap: wrap; 
+            justify-content: center;
+        }
+        .footer-links a { 
+            text-decoration: none; 
+            color: var(--primary-green); 
+            font-size: 14px; 
+            font-weight: 600; 
+            transition: 0.2s;
+        }
+        .footer-links a:hover { 
+            color: var(--secondary-gray);
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -171,6 +191,13 @@
 
 <div class="footer-note" id="t-footer"></div>
 
+<div class="footer-links">
+    <a href="haqqimizda.html" id="link-about">Haqqımızda</a>
+    <a href="elaqe.html" id="link-contact">Əlaqə</a>
+    <a href="gizlilik.html" id="link-privacy">Gizlilik Siyasəti</a>
+    <a href="sertler.html" id="link-terms">İstifadə Şərtləri</a>
+</div>
+
 <script>
     let currentLang = 'az';
     let currentUnit = 'metric';
@@ -180,6 +207,7 @@
             h1: "Bədən Kütlə İndeksi Hesablayıcı", age: "Yaşınız:", height: "Boyunuz (sm):", weight: "Çəkiniz (kq):", calc: "Hesabla", clear: "Təmizlə", res: "Sizin Nəticəniz:", footer: "Qeyd: Bu hesablama yalnız məlumat xarakterlidir və fərdi fiziki xüsusiyyətlərinizə görə dəyişə bilər.",
             h_imp: "Boyunuz (ft/in):", w_imp: "Çəkiniz (lbs):",
             status: ["Ciddi Çəki Azlığı", "Çəki Azlığı", "Normal Çəki", "Artıq Çəki", "Piylənmə (I Dərəcə)", "Piylənmə (II Dərəcə)", "Morbid Piylənmə"],
+            links: ["Haqqımızda", "Əlaqə", "Gizlilik Siyasəti", "İstifadə Şərtləri"],
             html: `
                 <h2>1. Bədən Kütlə İndeksi (BKİ) Nədir?</h2>
                 <p>Bədən Kütlə İndeksi (BKİ), fərdin çəkisinin boyuna olan nisbətini qiymətləndirmək üçün istifadə edilən praktik ölçü vahididir. Bu göstərici ümumi bədən quruluşunu anlamaq üçün əla başlanğıc nöqtəsidir.</p>
@@ -204,6 +232,7 @@
             h1: "Калькулятор Индекса Массы Тела", age: "Ваш возраст:", height: "Ваш рост (см):", weight: "Ваш вес (кг):", calc: "Рассчитать", clear: "Очистить", res: "Ваш Результат:", footer: "Примечание: Данный расчет носит справочный характер и может варьироваться в зависимости от индивидуальных особенностей.",
             h_imp: "Рост (фт/дюйм):", w_imp: "Вес (фунты):",
             status: ["Выраженный дефицит", "Дефицит веса", "Норма", "Избыточный вес", "Ожирение I", "Ожирение II", "Морбидное ожирение"],
+            links: ["О нас", "Контакты", "Политика конфиденциальности", "Условия использования"],
             html: `
                 <h2>1. Что такое Индекс Массы Тела (ИМТ)?</h2>
                 <p>ИМТ — это практический способ оценки соотношения веса и роста человека. Этот метод широко используется для быстрого анализа физического состояния.</p>
@@ -228,6 +257,7 @@
             h1: "BMI Calculator Online", age: "Your Age:", height: "Your Height (cm):", weight: "Your Weight (kg):", calc: "Calculate", clear: "Clear", res: "Your Result:", footer: "Note: This calculation is for informational purposes and may vary based on individual physical characteristics.",
             h_imp: "Height (ft/in):", w_imp: "Weight (lbs):",
             status: ["Severe Thinness", "Underweight", "Normal Range", "Overweight", "Obese Class I", "Obese Class II", "Obese Class III"],
+            links: ["About Us", "Contact", "Privacy Policy", "Terms of Service"],
             html: `
                 <h2>1. What is Body Mass Index (BMI)?</h2>
                 <p>BMI is a practical measurement used to assess the relationship between a person's weight and height. It is a great starting point for understanding body composition.</p>
@@ -262,6 +292,13 @@
         document.getElementById('t-res-head').innerText = l.res;
         document.getElementById('t-footer').innerText = l.footer;
         document.getElementById('seo-area').innerHTML = l.html;
+        
+        // Footer linklərin dilini dəyiş
+        document.getElementById('link-about').innerText = l.links[0];
+        document.getElementById('link-contact').innerText = l.links[1];
+        document.getElementById('link-privacy').innerText = l.links[2];
+        document.getElementById('link-terms').innerText = l.links[3];
+
         setUnit(currentUnit); 
     }
 
