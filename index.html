@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W2GG8C5YXN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-W2GG8C5YXN');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Professional Body Mass Index Analysis & Health Guide</title>
+    <meta name="description" content="Calculate your Body Mass Index (BMI) accurately with our professional online tool. Learn about weight categories, scientific health risks, and wellness tips.">
+    
+    <link rel="canonical" href="https://www.bkihesablama.site/index.html" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7563994232518889" crossorigin="anonymous"></script>
+
+    <style>
+        :root { --primary-green: #4e7d5e; --secondary-gray: #6c757d; --bg-light: #f4f7f6; --border-color: #e2e8f0; --text-main: #2d3748; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--bg-light); color: var(--text-main); margin: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; line-height: 1.6; }
+        .app-container { background: white; width: 100%; max-width: 650px; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); box-sizing: border-box; }
+        h1 { text-align: center; font-size: 28px; margin-bottom: 30px; color: #1a202c; border-bottom: 3px solid var(--primary-green); padding-bottom: 15px; }
+        .unit-toggle { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .unit-btn { padding: 8px 16px; border: 1px solid var(--border-color); background: #f8fafc; border-radius: 8px; cursor: pointer; font-size: 14px; transition: 0.3s; }
+        .unit-btn.active { background: var(--secondary-gray); color: white; border-color: var(--secondary-gray); }
+        .input-row { margin-bottom: 20px; }
+        .input-row label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 15px; }
+        .input-row input { width: 100%; padding: 14px; border: 1px solid var(--border-color); border-radius: 12px; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        .input-row input:focus { border-color: var(--primary-green); box-shadow: 0 0 0 3px rgba(78, 125, 94, 0.1); }
+        .dual-inputs { display: flex; gap: 10px; }
+        .btn-box { display: flex; gap: 15px; margin-top: 30px; }
+        .btn { flex: 1; padding: 16px; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .btn-main { background: var(--primary-green); color: white; }
+        .btn-main:hover { background: #3d634a; }
+        .btn-alt { background: var(--secondary-gray); color: white; }
+        .result-panel { margin-top: 35px; text-align: center; padding-top: 30px; border-top: 1px solid #edf2f7; display: none; }
+        .bmi-val { font-size: 56px; font-weight: 900; color: var(--primary-green); margin: 10px 0; }
+        .bmi-cat { font-size: 22px; font-weight: 700; margin-bottom: 25px; }
+        .gauge-wrapper { position: relative; width: 100%; height: 40px; margin-top: 35px; }
+        .gauge-bar { width: 100%; height: 25px; border-radius: 12px; display: flex; overflow: hidden; }
+        .gauge-labels { position: absolute; top: -25px; width: 100%; font-size: 12px; font-weight: bold; color: #718096; display: flex; justify-content: space-between; }
+        .ptr { position: absolute; top: -5px; width: 5px; height: 35px; background: #2d3748; border: 2px solid white; border-radius: 10px; transition: left 1s; z-index: 10; }
+        .scientific-content { width: 100%; max-width: 850px; margin-top: 40px; }
+        .article-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 30px; }
+        .article-card h2 { color: var(--primary-green); font-size: 24px; margin-top: 30px; border-left: 5px solid var(--primary-green); padding-left: 15px; }
+        .math-box { background: #f0fdf4; padding: 25px; border-radius: 12px; border: 1px solid #dcfce7; font-weight: bold; text-align: center; margin: 20px 0; font-family: 'Courier New', monospace; font-size: 1.1em; }
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; }
+        th { background: #f8fafc; padding: 15px; text-align: left; border-bottom: 2px solid #edf2f7; color: var(--primary-green); }
+        td { padding: 15px; border-bottom: 1px solid #edf2f7; }
+        .footer-note { font-size: 13px; color: #a0aec0; text-align: center; margin: 40px 0; max-width: 700px; }
+        .footer-links { display: flex; gap: 25px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; border-top: 1px solid #e2e8f0; padding-top: 20px; width: 100%; max-width: 850px; }
+        .footer-links a { text-decoration: none; color: var(--primary-green); font-size: 14px; font-weight: 600; transition: 0.3s; }
+        .footer-links a:hover { color: #2d3748; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <h1>BMI Calculator</h1>
+    <div class="unit-toggle">
+        <button class="unit-btn active" id="u-metric" onclick="setUnit('metric')">Metric (cm/kg)</button>
+        <button class="unit-btn" id="u-imperial" onclick="setUnit('imperial')">US (ft+in/lbs)</button>
+    </div>
+    
+    <div class="input-row">
+        <label>Your Age:</label>
+        <input type="number" id="age" placeholder="Example: 28">
+    </div>
+
+    <div class="input-row" id="height-container">
+        <label>Your Height (cm):</label>
+        <input type="number" id="height" placeholder="Example: 178">
+    </div>
+    <div class="input-row" id="height-imp-container" style="display:none;">
+        <label>Your Height (ft & in):</label>
+        <div class="dual-inputs">
+            <input type="number" id="ft" placeholder="ft">
+            <input type="number" id="in" placeholder="in">
+        </div>
+    </div>
+
+    <div class="input-row">
+        <label id="t-weight">Your Weight (kg):</label>
+        <input type="number" id="weight" placeholder="Example: 75">
+    </div>
+
+    <div class="btn-box">
+        <button class="btn btn-main" onclick="calculate()">Calculate Now</button>
+        <button class="btn btn-alt" onclick="clearUI()">Clear Results</button>
+    </div>
+
+    <div class="result-panel" id="res-panel">
+        <p style="color:#718096; font-weight:600;">Personal Analysis Result:</p>
+        <div class="bmi-val" id="bmi-num">0</div>
+        <div class="bmi-cat" id="bmi-status">Normal Weight</div>
+        <div class="gauge-wrapper">
+            <div id="gauge-labels-container" class="gauge-labels"></div>
+            <div class="gauge-bar" id="gauge-bar"></div>
+            <div class="ptr" id="ptr"></div>
+        </div>
+    </div>
+</div>
+
+<div class="scientific-content">
+    <div class="article-card">
+        <h2>What Exactly is Body Mass Index?</h2>
+        <p>The Body Mass Index (BMI) is a specialized statistical measurement derived from an individual's mass and height. It is defined as the body mass divided by the square of the body height, and is universally expressed in units of kg/m². BMI is used as a screening tool to identify whether an adult is within a healthy weight range or if they fall into categories that may increase susceptibility to various health complications.</p>
+        
+        <div class="math-box">Metric Formula: BMI = Weight (kg) / [Height (m)]²</div>
+
+        <h2>Detailed Health Category Breakdown</h2>
+        <p>Health professionals globally recognize the World Health Organization (WHO) standards for BMI classification. Understanding where you stand helps in making informed decisions about nutrition and physical activity.</p>
+        <table>
+            <tr><th>BMI Category</th><th>BMI Range (kg/m²)</th><th>Estimated Health Risk</th></tr>
+            <tr><td>Underweight</td><td>Below 18.5</td><td>Risk of nutritional deficiency</td></tr>
+            <tr><td><strong>Normal Weight</strong></td><td><strong>18.5 – 24.9</strong></td><td><strong>Lowest risk for most people</strong></td></tr>
+            <tr><td>Overweight</td><td>25.0 – 29.9</td><td>Increased risk of metabolic issues</td></tr>
+            <tr><td>Obese Class I</td><td>30.0 – 34.9</td><td>High risk of heart-related conditions</td></tr>
+            <tr><td>Obese Class II</td><td>35.0 – 39.9</td><td>Very high health risk factors</td></tr>
+            <tr><td>Morbid Obesity</td><td>Above 40.0</td><td>Extreme risk of chronic illness</td></tr>
+        </table>
+
+        <h2>Why You Should Track Your BMI Regularly</h2>
+        <p>Maintaining a BMI within the healthy range is strongly correlated with a reduced risk of chronic diseases. Scientific research has linked high BMI values to conditions such as Type 2 diabetes, coronary heart disease, high blood pressure, and certain types of cancer. Conversely, a BMI that is too low can lead to bone density loss, hair loss, and a weakened immune system. Our <strong>Professional BMI Calculator</strong> provides instant results to help you monitor these trends effectively.</p>
+
+        <h2>Important Scientific Limitations</h2>
+        <p>While BMI is an excellent general indicator, it does have limitations. It does not distinguish between muscle mass, bone density, and body fat. For instance, elite athletes or bodybuilders might have a high BMI because of significant muscle mass rather than high body fat. Therefore, it should be used as a primary screening tool alongside other measurements like waist circumference and body fat percentage for a complete health profile.</p>
+
+        <h2>Tips for Achieving a Healthy BMI</h2>
+        <p>Reaching a balanced BMI requires a sustainable approach to health. Focus on incorporating whole foods, lean proteins, and plenty of fiber into your diet. Regular aerobic exercise combined with strength training can help optimize your body composition. Always consult with a licensed healthcare provider before initiating any intensive weight loss or gain programs based on your BMI results.</p>
+    </div>
+</div>
+
+<div class="footer-note">
+    Educational Disclaimer: The results provided by bkihesablama.site are for informational purposes only and do not constitute clinical medical advice.
+</div>
+
+<div class="footer-links">
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+</div>
+
+<script>
+    let currentUnit = 'metric';
+    const statusText = ["Severely Underweight", "Underweight", "Normal Weight", "Overweight", "Obese Class I", "Obese Class II", "Morbidly Obese"];
+
+    function setUnit(unit) {
+        currentUnit = unit;
+        document.querySelectorAll('.unit-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(`u-${unit}`).classList.add('active');
+        if(unit === 'metric') {
+            document.getElementById('height-container').style.display = 'block';
+            document.getElementById('height-imp-container').style.display = 'none';
+            document.getElementById('t-weight').innerText = "Your Weight (kg):";
+        } else {
+            document.getElementById('height-container').style.display = 'none';
+            document.getElementById('height-imp-container').style.display = 'block';
+            document.getElementById('t-weight').innerText = "Your Weight (lbs):";
+        }
+    }
+
+    function calculate() {
+        let h_m, w_kg;
+        if(currentUnit === 'metric') {
+            h_m = document.getElementById('height').value / 100;
+            w_kg = document.getElementById('weight').value;
+        } else {
+            let ft = parseFloat(document.getElementById('ft').value) || 0;
+            let inch = parseFloat(document.getElementById('in').value) || 0;
+            h_m = ((ft * 12) + inch) * 0.0254;
+            w_kg = document.getElementById('weight').value * 0.453592;
+        }
+        
+        if (h_m > 0.5 && w_kg > 10) {
+            let bmi = (w_kg / (h_m * h_m)).toFixed(1);
+            document.getElementById('bmi-num').innerText = bmi;
+            document.getElementById('res-panel').style.display = 'block';
+            
+            let status = "", color = "";
+            if (bmi < 16) { status = statusText[0]; color = "#3182ce"; }
+            else if (bmi < 18.5) { status = statusText[1]; color = "#63b3ed"; }
+            else if (bmi < 25) { status = statusText[2]; color = "#48bb78"; }
+            else if (bmi < 30) { status = statusText[3]; color = "#ecc94b"; }
+            else if (bmi < 35) { status = statusText[4]; color = "#ed8936"; }
+            else if (bmi < 40) { status = statusText[5]; color = "#e53e3e"; }
+            else { status = statusText[6]; color = "#9b2c2c"; }
+            
+            const sElem = document.getElementById('bmi-status');
+            sElem.innerText = status; sElem.style.color = color;
+            updateGauge(bmi);
+            document.getElementById('res-panel').scrollIntoView({ behavior: 'smooth' });
+        } else {
+            alert("Please enter valid height and weight values.");
+        }
+    }
+
+    function updateGauge(val) {
+        const max = 45; const L = { u: 18.5, n: 25, o: 30 };
+        document.getElementById('gauge-bar').innerHTML = `<div style="width:${(L.u/max)*100}%; background:#63b3ed"></div><div style="width:${((L.n-L.u)/max)*100}%; background:#48bb78"></div><div style="width:${((L.o-L.n)/max)*100}%; background:#ecc94b"></div><div style="flex:1; background:#e53e3e"></div>`;
+        document.getElementById('gauge-labels-container').innerHTML = `<span style="position:absolute; left:0">0</span><span style="position:absolute; left:${(L.u/max)*100}%">${L.u}</span><span style="position:absolute; left:${(L.n/max)*100}%">${L.n}</span><span style="position:absolute; left:${(L.o/max)*100}%">${L.o}</span><span style="position:absolute; right:0">${max}+</span>`;
+        document.getElementById('ptr').style.left = Math.min((val/max)*100, 98) + '%';
+    }
+
+    function clearUI() { 
+        document.querySelectorAll('input').forEach(i => i.value = ""); 
+        document.getElementById('res-panel').style.display = 'none'; 
+    }
+</script>
+</body>
+</html>
