@@ -32,46 +32,45 @@
             .navbar { padding: 12px 15px; border-radius: 10px; flex-direction: column; gap: 10px; }
             .nav-links { gap: 10px; justify-content: center; }
             .nav-links a { font-size: 11px; }
-            .nav-logo { font-size: 15px; }
         }
 
         .app-container { background: white; width: 100%; max-width: 650px; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); box-sizing: border-box; }
         h1 { text-align: center; font-size: 28px; margin-bottom: 30px; color: #1a202c; border-bottom: 3px solid var(--primary-green); padding-bottom: 15px; }
+        
         .unit-toggle { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
         .unit-btn { padding: 8px 16px; border: 1px solid var(--border-color); background: #f8fafc; border-radius: 8px; cursor: pointer; font-size: 14px; transition: 0.3s; }
         .unit-btn.active { background: var(--secondary-gray); color: white; border-color: var(--secondary-gray); }
+        
         .input-row { margin-bottom: 20px; }
         .input-row label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 15px; }
         .input-row input { width: 100%; padding: 14px; border: 1px solid var(--border-color); border-radius: 12px; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
         .input-row input:focus { border-color: var(--primary-green); box-shadow: 0 0 0 3px rgba(78, 125, 94, 0.1); }
+        
         .dual-inputs { display: flex; gap: 10px; }
         .btn-box { display: flex; gap: 15px; margin-top: 30px; }
         .btn { flex: 1; padding: 16px; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
         .btn-main { background: var(--primary-green); color: white; }
-        .btn-main:hover { background: #3d634a; }
         .btn-alt { background: var(--secondary-gray); color: white; }
+        
         .result-panel { margin-top: 35px; text-align: center; padding-top: 30px; border-top: 1px solid #edf2f7; display: none; }
         .bmi-val { font-size: 56px; font-weight: 900; color: var(--primary-green); margin: 10px 0; }
         .bmi-cat { font-size: 22px; font-weight: 700; margin-bottom: 25px; }
+        
         .gauge-wrapper { position: relative; width: 100%; height: 40px; margin-top: 35px; }
         .gauge-bar { width: 100%; height: 25px; border-radius: 12px; display: flex; overflow: hidden; }
         .gauge-labels { position: absolute; top: -25px; width: 100%; font-size: 12px; font-weight: bold; color: #718096; display: flex; justify-content: space-between; }
         .ptr { position: absolute; top: -5px; width: 5px; height: 35px; background: #2d3748; border: 2px solid white; border-radius: 10px; transition: left 1s; z-index: 10; }
+        
         .scientific-content { width: 100%; max-width: 850px; margin-top: 40px; }
         .article-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 30px; }
         .article-card h2 { color: var(--primary-green); font-size: 24px; margin-top: 35px; border-left: 5px solid var(--primary-green); padding-left: 15px; }
-        .article-card h3 { color: #2d3748; font-size: 20px; margin-top: 25px; }
-        .math-box { background: #f0fdf4; padding: 25px; border-radius: 12px; border: 1px solid #dcfce7; font-weight: bold; text-align: center; margin: 20px 0; font-family: 'Courier New', monospace; font-size: 1.1em; }
+        
         table { width: 100%; border-collapse: collapse; margin: 25px 0; }
         th { background: #f8fafc; padding: 15px; text-align: left; border-bottom: 2px solid #edf2f7; color: var(--primary-green); }
         td { padding: 15px; border-bottom: 1px solid #edf2f7; }
-        .faq-section { margin-top: 30px; }
-        .faq-item { margin-bottom: 20px; border-bottom: 1px solid #edf2f7; padding-bottom: 15px; }
-        .faq-question { font-weight: 700; color: var(--primary-green); display: block; margin-bottom: 8px; }
-        .footer-note { font-size: 13px; color: #a0aec0; text-align: center; margin: 40px 0; max-width: 700px; }
-        .footer-links { display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; border-top: 1px solid #e2e8f0; padding-top: 20px; width: 100%; max-width: 850px; }
-        .footer-links a { text-decoration: none; color: var(--primary-green); font-size: 14px; font-weight: 600; transition: 0.3s; }
-        .footer-links a:hover { color: #2d3748; text-decoration: underline; }
+        
+        .footer-links { display: flex; gap: 20px; margin-top: 40px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; border-top: 1px solid #e2e8f0; padding-top: 25px; width: 100%; max-width: 850px; }
+        .footer-links a { text-decoration: none; color: var(--primary-green); font-size: 14px; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -96,12 +95,12 @@
     
     <div class="input-row">
         <label>Your Age:</label>
-        <input type="number" id="age" placeholder="Example: 28">
+        <input type="number" id="age" placeholder="Example: 25">
     </div>
 
     <div class="input-row" id="height-container">
         <label>Your Height (cm):</label>
-        <input type="number" id="height" placeholder="Example: 178">
+        <input type="number" id="height" placeholder="Example: 175">
     </div>
     <div class="input-row" id="height-imp-container" style="display:none;">
         <label>Your Height (ft & in):</label>
@@ -113,18 +112,17 @@
 
     <div class="input-row">
         <label id="t-weight">Your Weight (kg):</label>
-        <input type="number" id="weight" placeholder="Example: 75">
+        <input type="number" id="weight" placeholder="Example: 70">
     </div>
 
     <div class="btn-box">
-        <button class="btn btn-main" onclick="calculate()">Calculate Now</button>
-        <button class="btn btn-alt" onclick="clearUI()">Clear Results</button>
+        <button class="btn btn-main" onclick="calculate()">Calculate</button>
+        <button class="btn btn-alt" onclick="clearUI()">Clear</button>
     </div>
 
     <div class="result-panel" id="res-panel">
-        <p style="color:#718096; font-weight:600;">Personal Analysis Result:</p>
         <div class="bmi-val" id="bmi-num">0</div>
-        <div class="bmi-cat" id="bmi-status">Normal Weight</div>
+        <div class="bmi-cat" id="bmi-status">Normal</div>
         <div class="gauge-wrapper">
             <div id="gauge-labels-container" class="gauge-labels"></div>
             <div class="gauge-bar" id="gauge-bar"></div>
@@ -135,59 +133,20 @@
 
 <div class="scientific-content">
     <div class="article-card">
-        <h2>What Exactly is Body Mass Index?</h2>
-        <p>The Body Mass Index (BMI) is a universal health screening tool that estimates whether an individual's weight is appropriate for their height. Developed in the 19th century, it remains the standard for medical professionals to categorize weight-related health risks.</p>
+        <h2>What is BMI and Why Does it Matter?</h2>
+        <p>Body Mass Index (BMI) is a measure of body fat based on height and weight that applies to adult men and women. It is a vital starting point for understanding your metabolic health and identifying potential risks for cardiovascular issues.</p>
         
-        <div class="math-box">Metric Formula: BMI = Weight (kg) / [Height (m)]²</div>
-
-        <h2>Detailed Health Category Breakdown</h2>
+        <h2>Detailed BMI Classifications</h2>
         <table>
-            <tr><th>BMI Category</th><th>BMI Range (kg/m²)</th><th>Estimated Health Risk</th></tr>
-            <tr><td>Underweight</td><td>Below 18.5</td><td>Risk of nutritional deficiency</td></tr>
-            <tr><td><strong>Normal Weight</strong></td><td><strong>18.5 – 24.9</strong></td><td><strong>Lowest risk for most people</strong></td></tr>
-            <tr><td>Overweight</td><td>25.0 – 29.9</td><td>Increased risk of metabolic issues</td></tr>
-            <tr><td>Obese Class I</td><td>30.0 – 34.9</td><td>High risk of heart conditions</td></tr>
-            <tr><td>Obese Class II</td><td>35.0 – 39.9</td><td>Very high health risk factors</td></tr>
-            <tr><td>Morbid Obesity</td><td>Above 40.0</td><td>Extreme risk of chronic illness</td></tr>
+            <tr><th>Range</th><th>Category</th><th>Health Risk</th></tr>
+            <tr><td>Under 18.5</td><td>Underweight</td><td>Low to Moderate</td></tr>
+            <tr><td>18.5 – 24.9</td><td>Healthy Weight</td><td>Minimal</td></tr>
+            <tr><td>25.0 – 29.9</td><td>Overweight</td><td>Increased</td></tr>
+            <tr><td>30.0 and Above</td><td>Obese</td><td>High to Very High</td></tr>
         </table>
-
-        <h2>5 Proven Strategies to Lower Your BMI Naturally</h2>
-        <p>Achieving a healthy BMI is about optimizing your body's internal health. If your results show that you are in the overweight category, here are five scientifically-backed methods to start your journey:</p>
-        <ul>
-            <li><strong>Prioritize Protein:</strong> Increasing protein intake can boost metabolism and reduce hunger hormones.</li>
-            <li><strong>Focus on NEAT:</strong> Walking and moving throughout the day adds up to significant calorie burn.</li>
-            <li><strong>Hydration:</strong> Drinking water before meals has been shown to assist in weight management.</li>
-            <li><strong>Sleep Quality:</strong> Aim for 7-9 hours of rest to regulate appetite hormones.</li>
-            <li><strong>Fiber-Rich Diet:</strong> Soluble fiber helps you feel full longer and improves gut health.</li>
-        </ul>
-
-        <h2>Understanding BMI for Athletes: The "Muscle Paradox"</h2>
-        <p>A common question is why muscular individuals often receive high BMI scores. Because muscle tissue is significantly denser than fat, a person with low body fat but high muscle mass may be classified as 'Overweight' by standard BMI formulas.</p>
-        <p>In these cases, consider looking at secondary metrics like waist-to-hip ratio or body fat percentage for a complete profile.</p>
-
-        <h2>Important Scientific Limitations</h2>
-        <p>While BMI is an excellent general indicator, it does not distinguish between muscle mass, bone density, and body fat. For instance, elite athletes might have a high BMI because of significant muscle mass. Therefore, it should be used as a primary screening tool alongside other measurements.</p>
-
-        <h2> Frequently Asked Questions (FAQ)</h2>
-        <div class="faq-section">
-            <div class="faq-item">
-                <span class="faq-question">Is BMI accurate for everyone?</span>
-                <p>While useful for the majority, it may not be accurate for pregnant women, children, and professional athletes with high muscle density.</p>
-            </div>
-            <div class="faq-item">
-                <span class="faq-question">What is a "dangerously high" BMI?</span>
-                <p>A BMI over 30 is considered obese, and over 40 is morbidly obese. These levels are associated with Type 2 diabetes and hypertension.</p>
-            </div>
-            <div class="faq-item">
-                <span class="faq-question">How often should I check my BMI?</span>
-                <p>Checking once a month is sufficient for tracking long-term trends without becoming overly fixated on daily fluctuations.</p>
-            </div>
-        </div>
+        
+        <p>For a deeper dive into how muscle mass, genetics, and lifestyle affect these numbers, visit our <strong><a href="https://www.bkihesablama.site/blog" style="color:var(--primary-green);">Comprehensive Health Blog</a></strong>.</p>
     </div>
-</div>
-
-<div class="footer-note">
-    Educational Disclaimer: The results provided by bkihesablama.site are for informational purposes only and do not constitute medical advice.
 </div>
 
 <div class="footer-links">
@@ -249,7 +208,7 @@
             updateGauge(bmi);
             document.getElementById('res-panel').scrollIntoView({ behavior: 'smooth' });
         } else {
-            alert("Please enter valid height and weight values.");
+            alert("Please enter valid data.");
         }
     }
 
